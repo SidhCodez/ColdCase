@@ -1,72 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Surfaces */
-    --bg-base: #0a0a0b;
-    --bg-elevated: #141416;
-    --bg-raised: #1c1c1f;
-    --bg-overlay: rgba(10, 10, 11, 0.72);
-
-    /* Atmosphere */
-    --glow-accent: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245, 158, 11, 0.12), transparent 70%);
-    --glow-subtle: radial-gradient(ellipse 60% 50% at 20% 100%, rgba(245, 158, 11, 0.06), transparent 60%);
+    /* Surfaces: Committed Strategy (Tinted Zinc/Slate) */
+    --bg-base: #09090b;
+    --bg-elevated: #18181b;
+    --bg-raised: #27272a;
+    --bg-overlay: rgba(9, 9, 11, 0.8);
 
     /* Text */
-    --fg-primary: #fafafa;
+    --fg-primary: #ffffff;
     --fg-secondary: #a1a1aa;
     --fg-tertiary: #71717a;
     --fg-disabled: #52525b;
 
-    /* Accent */
-    --accent: #f59e0b;
-    --accent-hover: #fbbf24;
-    --accent-muted: rgba(245, 158, 11, 0.12);
+    /* The Only Yellow (Pure highlighter) */
+    --marker-yellow: #fde047; /* Tailwind yellow-300 */
+    --marker-bg: rgba(253, 224, 71, 0.2);
 
     /* Borders */
     --border-default: #27272a;
-    --border-subtle: #1f1f23;
-    --border-accent: rgba(245, 158, 11, 0.4);
-
-    /* Confidence */
-    --conf-high: #22c55e;
-    --conf-high-bg: rgba(34, 197, 94, 0.10);
-    --conf-medium: #eab308;
-    --conf-medium-bg: rgba(234, 179, 8, 0.10);
-    --conf-low: #f97316;
-    --conf-low-bg: rgba(249, 115, 22, 0.10);
-    --conf-none: #71717a;
-    --conf-none-bg: rgba(113, 113, 122, 0.10);
+    --border-subtle: #18181b;
+    --border-focus: #fde047;
 
     /* Semantic */
     --danger: #ef4444;
 
-    /* Radius */
-    --radius-xs: 4px;
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 16px;
-    --radius-xl: 20px;
-    --radius-full: 9999px;
-
-    /* Elevation */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.40);
-    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.50);
-
-    /* Motion */
-    --motion-instant: 80ms;
-    --motion-fast: 140ms;
-    --motion-base: 220ms;
-    --motion-slow: 320ms;
-    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-
     /* Typography */
-    --font-display: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Base body sizing */
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--fg-primary);
+    background-color: var(--bg-base);
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .marker-highlight {
+    background: linear-gradient(180deg, transparent 60%, var(--marker-yellow) 60%);
+    color: var(--bg-base);
+    padding: 0 4px;
+    display: inline-block;
+  }
+  
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  /* Redaction signature animation */
+  .redact-wrapper {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+  }
+  
+  .redact-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--fg-primary);
+    transform-origin: right;
+    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .group:hover .redact-wrapper::after,
+  .redact-wrapper.revealed::after {
+    transform: scaleX(0);
+  }
+
+  .group:hover .redact-wrapper,
+  .redact-wrapper.revealed {
+    color: inherit;
+    transition: color 0.1s 0.3s; /* Delay color reveal slightly */
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .redact-wrapper::after {
+      display: none;
+    }
+    .redact-wrapper {
+      color: inherit;
+    }
+  }
+
+  /* Focus ring standard */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fde047] focus-visible:ring-offset-2 focus-visible:ring-offset-[#09090b];
   }
 }

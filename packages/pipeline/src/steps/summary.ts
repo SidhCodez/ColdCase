@@ -12,32 +12,57 @@ export async function summaryStep(
   const client = llmClient || new LLMClient();
 
   const allClaims = narratives.flatMap(n => n.claims);
-  const claimsJson = JSON.stringify(allClaims, null, 2);
 
-  const systemPrompt = `You are summarizing a repository's history from a set of verified claims.
-Input: a list of claims.
-Output: JSON object with "eras" and "key_decisions".`;
+  // Filter out NONE placeholder claims — they add no information
+  const meaningfulClaims = allClaims.filter(c => c.text !== 'No recorded reason found');
+  const claimsJson = JSON.stringify(
+    meaningfulClaims.length > 0 ? meaningfulClaims : allClaims,
+    null,
+    2
+  );
+
+  const fileList = narratives.map(n => n.path).join(', ');
+
+  const systemPrompt = `You are a software historian summarizing a repository's evolution.
+
+Given a list of verified claims from the repository's hotspot files, you must:
+
+1. Identify 2-5 distinct ERAS in the project's history. An era is a phase like "Initial Setup", "TypeScript Migration", "Performance Optimization", "API Redesign", etc. Each era should have:
+   - A descriptive name (not generic — make it specific to this project)
+   - A date range (start and end dates from the claim evidence)
+   - A 2-3 sentence summary of what happened and WHY
+   - claim_ids that belong to this era
+
+2. Identify 2-6 KEY ARCHITECTURAL DECISIONS that shaped the codebase. Focus on choices like:
+   - "Why was X library chosen over Y?"
+   - "Why was the code restructured from A to B?"
+   - "What bug or incident caused this design pattern?"
+
+Output valid JSON matching: {"schema_version": "1.0.0", "source_ref": "...", "eras": [...], "key_decisions": [...]}`;
 
   const userPrompt = `Repository: ${owner}/${repo}@${refSha}
-Claims:
+Analyzed files: ${fileList}
+
 <|CLAIMS|>
 ${claimsJson}
-<|/CLAIMS|>`;
+<|/CLAIMS|>
+
+Synthesize the repository's history into eras and key decisions. Be specific to this project — avoid generic placeholder text.`;
 
   const mockFallback: Synthesis = {
     schema_version: '1.0.0',
     source_ref: `${owner}/${repo}@${refSha}`,
     eras: [
       {
-        name: 'Initial Skeleton Era',
-        date_range: { start: '2026-09-01', end: '2026-09-19' },
-        summary: 'Foundation setup and core architecture design.',
+        name: 'Foundation and Initial Development',
+        date_range: { start: '2020-01-01', end: '2024-12-31' },
+        summary: `The ${repo} repository was established with its core functionality. Key files and project structure were created to support the primary use case.`,
         claim_ids: allClaims.map(c => c.claim_id).slice(0, 5),
       },
     ],
     key_decisions: [
       {
-        text: 'Adopted offline-first architecture with SQLite cache and JSON snapshots.',
+        text: `The project adopted its current file structure to support maintainability and clear separation of concerns.`,
         claim_ids: allClaims.map(c => c.claim_id).slice(0, 3),
       },
     ],

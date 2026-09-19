@@ -22,7 +22,6 @@ export default function FilePage() {
 
   const selectedLineParam = searchParams.get('line');
   const selectedLine = selectedLineParam ? parseInt(selectedLineParam, 10) : undefined;
-
   const selectedEvidenceParam = searchParams.get('evidence');
 
   useEffect(() => {
@@ -40,8 +39,11 @@ export default function FilePage() {
 
   if (!fileData) {
     return (
-      <div className="min-h-screen bg-bg-base text-fg-primary p-12 text-center">
-        Loading case file...
+      <div className="min-h-screen bg-bg-base text-fg-primary flex items-center justify-center">
+        <div className="text-center space-y-3">
+          <div className="w-8 h-8 border-2 border-amber-400 border-t-transparent rounded-full animate-spin mx-auto" />
+          <p className="text-sm text-fg-secondary">Loading file...</p>
+        </div>
       </div>
     );
   }
@@ -82,7 +84,6 @@ export default function FilePage() {
     });
   };
 
-  // Find claims for selected line if LineWhyPanel is active
   let lineClaims: Claim[] = [];
   let matchedBlame = fileData.blame[0];
   if (selectedLine) {
@@ -91,27 +92,34 @@ export default function FilePage() {
     if (range) matchedBlame = range;
   }
 
+  // Filter out NONE claims for display to avoid confusing users with empty cards
+  const visibleClaims = fileData.narrative.claims.filter(
+    c => c.confidence_tier !== 'NONE'
+  );
+
   return (
     <div className="h-screen bg-bg-base text-fg-primary flex flex-col font-display overflow-hidden">
       {/* Header */}
-      <header className="border-b border-border-default bg-bg-elevated px-4 py-3 flex items-center justify-between h-14 shrink-0">
-        <div className="flex items-center gap-3">
+      <header className="border-b border-border-default bg-bg-elevated px-6 py-3 flex items-center justify-between h-14 shrink-0">
+        <div className="flex items-center gap-3 w-full">
           <button
             type="button"
             onClick={() => navigate(`/c/${owner}/${repo}`)}
-            className="text-xs text-fg-tertiary hover:text-fg-primary font-medium"
+            className="text-xs px-3 py-1.5 bg-bg-raised hover:bg-border-default rounded-md text-fg-primary font-medium transition-colors"
           >
-            ← Overview
+            ← Back to Overview
           </button>
           <span className="text-xs font-mono text-fg-tertiary">/</span>
-          <span className="text-xs font-mono font-bold text-fg-primary">{fileData.path}</span>
+          <span className="text-sm font-mono font-bold text-fg-primary truncate" title={fileData.path}>
+            {fileData.path}
+          </span>
         </div>
       </header>
 
       {/* Main Split View */}
-      <div className="flex-1 flex overflow-hidden relative">
-        {/* Left Pane: Code View (55%) */}
-        <div className="w-full md:w-[55%] border-r border-border-default h-full overflow-y-auto">
+      <div className="flex-1 flex flex-col md:flex-row overflow-hidden relative">
+        {/* Left Pane: Code View */}
+        <div className="w-full md:w-[60%] border-r border-border-default h-full overflow-y-auto">
           <CodeView
             content={fileData.content}
             blame={fileData.blame}
@@ -120,32 +128,44 @@ export default function FilePage() {
           />
         </div>
 
-        {/* Right Pane: Story Panel (45%) */}
-        <div className="hidden md:flex flex-col w-[45%] h-full overflow-y-auto p-4 bg-bg-base">
-          {fileData.narrative.sampled_history && (
-            <HonestyBanner variant="sampled" />
-          )}
-
-          <div className="mb-3">
-            <h2 className="text-sm font-bold text-fg-primary">File Story</h2>
-            <p className="text-xs text-fg-tertiary">
-              Chronological explanation with evidence receipts
+        {/* Right Pane: Story Panel */}
+        <div className="w-full md:w-[40%] h-full overflow-y-auto bg-bg-base">
+          <div className="p-6">
+            <h2 className="text-xl font-bold text-fg-primary mb-2">The Story of this File</h2>
+            <p className="text-sm text-fg-secondary mb-6 leading-relaxed">
+              This explains why the code was written this way. Click any line of code on the left to see the specific reason it was changed, or read the full chronological story below.
             </p>
-          </div>
 
-          <div className="space-y-3">
-            {fileData.narrative.claims.map(claim => (
-              <ClaimCard
-                key={claim.claim_id}
-                claim={claim}
-                onOpenEvidence={handleOpenEvidence}
-                onNavigateLine={line => handleLineClick(line)}
-              />
-            ))}
+            {fileData.narrative.sampled_history && (
+              <div className="mb-6">
+                <HonestyBanner variant="sampled" />
+              </div>
+            )}
+
+            {visibleClaims.length === 0 ? (
+              <div className="p-6 text-center border border-dashed border-border-default rounded-xl">
+                <div className="text-3xl mb-2">🕵️‍♂️</div>
+                <h3 className="text-sm font-bold text-fg-primary">No Recorded History</h3>
+                <p className="text-xs text-fg-tertiary mt-1">
+                  We searched the PRs and issues for this file's commits, but couldn't find any explicit statements explaining why these changes were made.
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {visibleClaims.map(claim => (
+                  <ClaimCard
+                    key={claim.claim_id}
+                    claim={claim}
+                    onOpenEvidence={handleOpenEvidence}
+                    onNavigateLine={line => handleLineClick(line)}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Line Why Side Panel Overlay */}
+        {/* Overlay: Line Why Panel (slides in when clicking a line) */}
         {selectedLine && matchedBlame && (
           <LineWhyPanel
             lineNumber={selectedLine}
@@ -158,7 +178,7 @@ export default function FilePage() {
         )}
       </div>
 
-      {/* Evidence Drawer Modal */}
+      {/* Modal: Evidence Drawer (opens when clicking a receipt) */}
       {selectedEvidence && (
         <EvidenceDrawer
           evidence={selectedEvidence}

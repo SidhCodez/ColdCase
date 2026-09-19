@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-19T16:21:07.733Z",
+  "generated_at": "2026-09-19T16:43:56.032Z",
   "repo": {
     "owner": "sindresorhus",
     "name": "is",
@@ -19438,7 +19438,7 @@
       "title": "Uncommitted working tree changes",
       "body": "Uncommitted working tree changes in local clone.",
       "author": "local",
-      "created_at": "2026-09-19T16:20:31.819Z"
+      "created_at": "2026-09-19T16:43:55.993Z"
     },
     {
       "id": "commit:7821031c66cdeb7256a0feb2d506535f9e84fcaf",

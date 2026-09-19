@@ -19,14 +19,12 @@ export async function ingestStep(repoArg: string): Promise<IngestResult> {
   const [, owner, repo] = match;
   let localPath: string;
 
-  // Check if repo exists locally (e.g. fixture or clone)
+  // Check if repo exists in fixtures
   const localRepoCandidate = path.resolve(process.cwd(), 'fixtures', repo);
-  const currentDirCandidate = process.cwd();
+  const repoString = `${owner}/${repo}`;
 
   if (fs.existsSync(path.join(localRepoCandidate, '.git'))) {
     localPath = localRepoCandidate;
-  } else if (fs.existsSync(path.join(currentDirCandidate, '.git'))) {
-    localPath = currentDirCandidate;
   } else {
     // Clone path in .cache/github
     localPath = path.resolve('.cache', 'repos', `${owner}__${repo}`);
@@ -36,6 +34,7 @@ export async function ingestStep(repoArg: string): Promise<IngestResult> {
       await git.clone(`https://github.com/${owner}/${repo}.git`, localPath, ['--depth', '100']);
     }
   }
+
 
   const git: SimpleGit = simpleGit(localPath);
   const log = await git.log({ maxCount: 1 });

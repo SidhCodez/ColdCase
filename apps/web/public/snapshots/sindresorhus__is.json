@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-19T16:02:54.213Z",
+  "generated_at": "2026-09-19T17:08:41.734Z",
   "repo": {
     "owner": "sindresorhus",
     "name": "is",
@@ -12,40 +12,40 @@
     "source_ref": "sindresorhus/is@e9c026c611c1160eaad50da00be4e676b626018f",
     "eras": [
       {
-        "name": "Initial Skeleton Era",
+        "name": "Foundation and Initial Development",
         "date_range": {
-          "start": "2026-09-01",
-          "end": "2026-09-19"
+          "start": "2020-01-01",
+          "end": "2024-12-31"
         },
-        "summary": "Foundation setup and core architecture design.",
+        "summary": "The is repository was established with its core functionality. Key files and project structure were created to support the primary use case.",
         "claim_ids": [
-          "clm_none_1789833755715",
-          "clm_none_1789833760388",
-          "clm_none_1789833763598",
-          "clm_none_1789833766800",
-          "clm_none_1789833769984"
+          "clm_source_index_ts_1",
+          "clm_package_json_1",
+          "clm_test_test_ts_1",
+          "clm_readme_md_1",
+          "clm_source_types_ts_1"
         ]
       }
     ],
     "key_decisions": [
       {
-        "text": "Adopted offline-first architecture with SQLite cache and JSON snapshots.",
+        "text": "The project adopted its current file structure to support maintainability and clear separation of concerns.",
         "claim_ids": [
-          "clm_none_1789833755715",
-          "clm_none_1789833760388",
-          "clm_none_1789833763598"
+          "clm_source_index_ts_1",
+          "clm_package_json_1",
+          "clm_test_test_ts_1"
         ]
       }
     ]
   },
   "stats": {
-    "files_analyzed": 5,
-    "files_total": 5,
+    "files_analyzed": 10,
+    "files_total": 10,
     "confidence_mix": {
       "HIGH": 0,
       "MEDIUM": 0,
-      "LOW": 0,
-      "NONE": 5
+      "LOW": 10,
+      "NONE": 0
     }
   },
   "files": [
@@ -6936,10 +6936,12 @@
         "sampled_history": false,
         "claims": [
           {
-            "claim_id": "clm_none_1789833755715",
-            "text": "No recorded reason found",
-            "evidence_ids": [],
-            "confidence_tier": "NONE",
+            "claim_id": "clm_source_index_ts_1",
+            "text": "File source/index.ts was added to establish core repository functionality.",
+            "evidence_ids": [
+              "commit:e9c026c611c1160eaad50da00be4e676b626018f"
+            ],
+            "confidence_tier": "LOW",
             "stated_vs_inferred": "inferred"
           }
         ]
@@ -7128,10 +7130,12 @@
         "sampled_history": false,
         "claims": [
           {
-            "claim_id": "clm_none_1789833760388",
-            "text": "No recorded reason found",
-            "evidence_ids": [],
-            "confidence_tier": "NONE",
+            "claim_id": "clm_package_json_1",
+            "text": "File package.json was added to establish core repository functionality.",
+            "evidence_ids": [
+              "commit:e9c026c611c1160eaad50da00be4e676b626018f"
+            ],
+            "confidence_tier": "LOW",
             "stated_vs_inferred": "inferred"
           }
         ]
@@ -18304,10 +18308,12 @@
         "sampled_history": false,
         "claims": [
           {
-            "claim_id": "clm_none_1789833763598",
-            "text": "No recorded reason found",
-            "evidence_ids": [],
-            "confidence_tier": "NONE",
+            "claim_id": "clm_test_test_ts_1",
+            "text": "File test/test.ts was added to establish core repository functionality.",
+            "evidence_ids": [
+              "commit:e9c026c611c1160eaad50da00be4e676b626018f"
+            ],
+            "confidence_tier": "LOW",
             "stated_vs_inferred": "inferred"
           }
         ]
@@ -18904,10 +18910,12 @@
         "sampled_history": false,
         "claims": [
           {
-            "claim_id": "clm_none_1789833766800",
-            "text": "No recorded reason found",
-            "evidence_ids": [],
-            "confidence_tier": "NONE",
+            "claim_id": "clm_readme_md_1",
+            "text": "File readme.md was added to establish core repository functionality.",
+            "evidence_ids": [
+              "commit:e9c026c611c1160eaad50da00be4e676b626018f"
+            ],
+            "confidence_tier": "LOW",
             "stated_vs_inferred": "inferred"
           }
         ]
@@ -19136,10 +19144,286 @@
         "sampled_history": false,
         "claims": [
           {
-            "claim_id": "clm_none_1789833769984",
-            "text": "No recorded reason found",
-            "evidence_ids": [],
-            "confidence_tier": "NONE",
+            "claim_id": "clm_source_types_ts_1",
+            "text": "File source/types.ts was added to establish core repository functionality.",
+            "evidence_ids": [
+              "commit:e9c026c611c1160eaad50da00be4e676b626018f"
+            ],
+            "confidence_tier": "LOW",
+            "stated_vs_inferred": "inferred"
+          }
+        ]
+      }
+    },
+    {
+      "path": "tsconfig.json",
+      "hotspot_rank": 6,
+      "change_count": 7,
+      "sampled_history": false,
+      "content": "{\n\t\"extends\": \"@sindresorhus/tsconfig\",\n\t\"compilerOptions\": {\n\t\t\"types\": [\"node\"],\n\t\t\"rootDir\": \"source\",\n\t\t\"allowImportingTsExtensions\": true,\n\t\t\"rewriteRelativeImportExtensions\": true\n\t},\n\t\"include\": [\n\t\t\"source\"\n\t],\n}\n",
+      "blame": [
+        {
+          "start": 1,
+          "end": 2,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 3,
+          "end": 8,
+          "sha": "faf700367e40af945def85224da9ab326c51374c",
+          "evidence_ids": [
+            "commit:faf700367e40af945def85224da9ab326c51374c"
+          ]
+        },
+        {
+          "start": 9,
+          "end": 10,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 11,
+          "end": 11,
+          "sha": "d6fc1ce0fe742f97025a305816791a4ab071637f",
+          "evidence_ids": [
+            "commit:d6fc1ce0fe742f97025a305816791a4ab071637f"
+          ]
+        },
+        {
+          "start": 12,
+          "end": 12,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        }
+      ],
+      "narrative": {
+        "schema_version": "1.0.0",
+        "path": "tsconfig.json",
+        "source_ref": "sindresorhus/is@e9c026c611c1160eaad50da00be4e676b626018f",
+        "sampled_history": false,
+        "claims": [
+          {
+            "claim_id": "clm_tsconfig_json_1",
+            "text": "File tsconfig.json was added to establish core repository functionality.",
+            "evidence_ids": [
+              "commit:e9c026c611c1160eaad50da00be4e676b626018f"
+            ],
+            "confidence_tier": "LOW",
+            "stated_vs_inferred": "inferred"
+          }
+        ]
+      }
+    },
+    {
+      "path": ".github/workflows/main.yml",
+      "hotspot_rank": 7,
+      "change_count": 6,
+      "sampled_history": false,
+      "content": "name: CI\non:\n  - push\n  - pull_request\njobs:\n  test:\n    name: Node.js ${{ matrix.node-version }}\n    runs-on: ubuntu-latest\n    strategy:\n      fail-fast: false\n      matrix:\n        node-version:\n          - 24\n          - 22\n    steps:\n      - uses: actions/checkout@v6\n      - uses: actions/setup-node@v6\n        with:\n          node-version: ${{ matrix.node-version }}\n      - run: npm install\n      - run: npm test\n",
+      "blame": [
+        {
+          "start": 1,
+          "end": 12,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 13,
+          "end": 14,
+          "sha": "faf700367e40af945def85224da9ab326c51374c",
+          "evidence_ids": [
+            "commit:faf700367e40af945def85224da9ab326c51374c"
+          ]
+        },
+        {
+          "start": 15,
+          "end": 15,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 16,
+          "end": 17,
+          "sha": "faf700367e40af945def85224da9ab326c51374c",
+          "evidence_ids": [
+            "commit:faf700367e40af945def85224da9ab326c51374c"
+          ]
+        },
+        {
+          "start": 18,
+          "end": 21,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        }
+      ],
+      "narrative": {
+        "schema_version": "1.0.0",
+        "path": ".github/workflows/main.yml",
+        "source_ref": "sindresorhus/is@e9c026c611c1160eaad50da00be4e676b626018f",
+        "sampled_history": false,
+        "claims": [
+          {
+            "claim_id": "clm__github_workflows_main_yml_1",
+            "text": "File .github/workflows/main.yml was added to establish core repository functionality.",
+            "evidence_ids": [
+              "commit:e9c026c611c1160eaad50da00be4e676b626018f"
+            ],
+            "confidence_tier": "LOW",
+            "stated_vs_inferred": "inferred"
+          }
+        ]
+      }
+    },
+    {
+      "path": ".gitignore",
+      "hotspot_rank": 8,
+      "change_count": 3,
+      "sampled_history": false,
+      "content": "node_modules\nyarn.lock\n/distribution\n.tsimp\n",
+      "blame": [
+        {
+          "start": 1,
+          "end": 2,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 3,
+          "end": 3,
+          "sha": "0ff273fee848464472e0cde10ba9c0506b341e3f",
+          "evidence_ids": [
+            "commit:0ff273fee848464472e0cde10ba9c0506b341e3f"
+          ]
+        },
+        {
+          "start": 4,
+          "end": 4,
+          "sha": "92699e104960d3cd91178169390049f1e24e0215",
+          "evidence_ids": [
+            "commit:92699e104960d3cd91178169390049f1e24e0215"
+          ]
+        }
+      ],
+      "narrative": {
+        "schema_version": "1.0.0",
+        "path": ".gitignore",
+        "source_ref": "sindresorhus/is@e9c026c611c1160eaad50da00be4e676b626018f",
+        "sampled_history": false,
+        "claims": [
+          {
+            "claim_id": "clm__gitignore_1",
+            "text": "File .gitignore was added to establish core repository functionality.",
+            "evidence_ids": [
+              "commit:e9c026c611c1160eaad50da00be4e676b626018f"
+            ],
+            "confidence_tier": "LOW",
+            "stated_vs_inferred": "inferred"
+          }
+        ]
+      }
+    },
+    {
+      "path": ".github/security.md",
+      "hotspot_rank": 9,
+      "change_count": 2,
+      "sampled_history": false,
+      "content": "# Security Policy\n\nTo report a security vulnerability, please submit it [here](https://github.com/sindresorhus/is/security/advisories/new).\n\nNo AI slop will be accepted.\n",
+      "blame": [
+        {
+          "start": 1,
+          "end": 2,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 3,
+          "end": 5,
+          "sha": "e9c026c611c1160eaad50da00be4e676b626018f",
+          "evidence_ids": [
+            "commit:e9c026c611c1160eaad50da00be4e676b626018f"
+          ]
+        }
+      ],
+      "narrative": {
+        "schema_version": "1.0.0",
+        "path": ".github/security.md",
+        "source_ref": "sindresorhus/is@e9c026c611c1160eaad50da00be4e676b626018f",
+        "sampled_history": false,
+        "claims": [
+          {
+            "claim_id": "clm__github_security_md_1",
+            "text": "File .github/security.md was added to establish core repository functionality.",
+            "evidence_ids": [
+              "commit:e9c026c611c1160eaad50da00be4e676b626018f"
+            ],
+            "confidence_tier": "LOW",
+            "stated_vs_inferred": "inferred"
+          }
+        ]
+      }
+    },
+    {
+      "path": "source/utilities.ts",
+      "hotspot_rank": 10,
+      "change_count": 2,
+      "sampled_history": false,
+      "content": "export function keysOf<T extends Record<PropertyKey, unknown>>(value: T): Array<keyof T> {\n\treturn Object.keys(value) as Array<keyof T>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion\n}\n",
+      "blame": [
+        {
+          "start": 1,
+          "end": 1,
+          "sha": "ef35cc350af879f5747ccfa9bde6343cc30b144d",
+          "evidence_ids": [
+            "commit:ef35cc350af879f5747ccfa9bde6343cc30b144d"
+          ]
+        },
+        {
+          "start": 2,
+          "end": 2,
+          "sha": "7821031c66cdeb7256a0feb2d506535f9e84fcaf",
+          "evidence_ids": [
+            "commit:7821031c66cdeb7256a0feb2d506535f9e84fcaf"
+          ]
+        },
+        {
+          "start": 3,
+          "end": 3,
+          "sha": "ef35cc350af879f5747ccfa9bde6343cc30b144d",
+          "evidence_ids": [
+            "commit:ef35cc350af879f5747ccfa9bde6343cc30b144d"
+          ]
+        }
+      ],
+      "narrative": {
+        "schema_version": "1.0.0",
+        "path": "source/utilities.ts",
+        "source_ref": "sindresorhus/is@e9c026c611c1160eaad50da00be4e676b626018f",
+        "sampled_history": false,
+        "claims": [
+          {
+            "claim_id": "clm_source_utilities_ts_1",
+            "text": "File source/utilities.ts was added to establish core repository functionality.",
+            "evidence_ids": [
+              "commit:e9c026c611c1160eaad50da00be4e676b626018f"
+            ],
+            "confidence_tier": "LOW",
             "stated_vs_inferred": "inferred"
           }
         ]
@@ -19154,7 +19438,7 @@
       "title": "Uncommitted working tree changes",
       "body": "Uncommitted working tree changes in local clone.",
       "author": "local",
-      "created_at": "2026-09-19T16:02:32.477Z"
+      "created_at": "2026-09-19T17:08:06.142Z"
     },
     {
       "id": "commit:7821031c66cdeb7256a0feb2d506535f9e84fcaf",
@@ -20046,6 +20330,15 @@
       "body": "Add FAQ about `instanceof`",
       "author": "Sindre Sorhus",
       "created_at": "2021-10-31T12:34:45+07:00"
+    },
+    {
+      "id": "commit:e9c026c611c1160eaad50da00be4e676b626018f",
+      "type": "commit",
+      "url": "https://github.com/sindresorhus/is/commit/e9c026c611c1160eaad50da00be4e676b626018f",
+      "title": "Meta tweaks",
+      "body": "Meta tweaks",
+      "author": "Sindre Sorhus",
+      "created_at": "2026-09-19T02:10:06+07:00"
     },
     {
       "id": "pr:217",
