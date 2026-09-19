@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-09-19T16:03:42.871Z",
+  "totalSnapshots": 2,
+  "invariantsPassed": true,
+  "quoteCheckPassRate": 100,
+  "precisionEstimate": 95,
+  "unbackedClaimsCount": 0,
+  "confidenceMixOverall": {
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 8,
+    "NONE": 0
+  }
+}

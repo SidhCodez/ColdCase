@@ -1,0 +1,267 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-19T15:21:18.656Z",
+  "repo": {
+    "owner": "fixtures",
+    "name": "fixture-repo",
+    "default_branch": "master",
+    "last_fetched_sha": "91875acf98773063b0a4fe24d60fb75b6f89e705"
+  },
+  "synthesis": {
+    "schema_version": "1.0.0",
+    "source_ref": "fixtures/fixture-repo@91875acf98773063b0a4fe24d60fb75b6f89e705",
+    "eras": [
+      {
+        "name": "Initial Skeleton Era",
+        "date_range": {
+          "start": "2026-09-01",
+          "end": "2026-09-19"
+        },
+        "summary": "Foundation setup and core architecture design.",
+        "claim_ids": [
+          "clm_src_cache_js_1",
+          "clm_src_theme_css_1",
+          "clm_src_ws_js_1"
+        ]
+      }
+    ],
+    "key_decisions": [
+      {
+        "text": "Adopted offline-first architecture with SQLite cache and JSON snapshots.",
+        "claim_ids": [
+          "clm_src_cache_js_1",
+          "clm_src_theme_css_1",
+          "clm_src_ws_js_1"
+        ]
+      }
+    ]
+  },
+  "stats": {
+    "files_analyzed": 3,
+    "files_total": 3,
+    "confidence_mix": {
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 3,
+      "NONE": 0
+    }
+  },
+  "files": [
+    {
+      "path": "src/cache.js",
+      "hotspot_rank": 1,
+      "change_count": 2,
+      "sampled_history": false,
+      "content": "��/\u0000/\u0000 \u0000S\u0000Q\u0000L\u0000i\u0000t\u0000e\u0000 \u0000c\u0000a\u0000c\u0000h\u0000e\u0000 \u0000t\u0000o\u0000 \u0000s\u0000u\u0000p\u0000p\u0000o\u0000r\u0000t\u0000 \u0000o\u0000f\u0000f\u0000l\u0000i\u0000n\u0000e\u0000 \u0000m\u0000o\u0000d\u0000e\u0000\r\u0000\n\u0000",
+      "blame": [
+        {
+          "start": 1,
+          "end": 1,
+          "sha": "a707132244217e5f5910db309f31c3d72d73a8df",
+          "evidence_ids": [
+            "commit:a707132244217e5f5910db309f31c3d72d73a8df"
+          ]
+        },
+        {
+          "start": 2,
+          "end": 2,
+          "sha": "18a805e52b4cd429d0843e210bf5aa2694880358",
+          "evidence_ids": [
+            "commit:18a805e52b4cd429d0843e210bf5aa2694880358"
+          ]
+        }
+      ],
+      "narrative": {
+        "schema_version": "1.0.0",
+        "path": "src/cache.js",
+        "source_ref": "fixtures/fixture-repo@91875acf98773063b0a4fe24d60fb75b6f89e705",
+        "sampled_history": false,
+        "claims": [
+          {
+            "claim_id": "clm_src_cache_js_1",
+            "text": "File src/cache.js was added to establish core repository functionality.",
+            "evidence_ids": [
+              "commit:91875acf98773063b0a4fe24d60fb75b6f89e705"
+            ],
+            "confidence_tier": "LOW",
+            "stated_vs_inferred": "inferred"
+          }
+        ]
+      }
+    },
+    {
+      "path": "src/theme.css",
+      "hotspot_rank": 2,
+      "change_count": 2,
+      "sampled_history": false,
+      "content": "��/\u0000*\u0000 \u0000D\u0000a\u0000r\u0000k\u0000 \u0000t\u0000h\u0000e\u0000m\u0000e\u0000 \u0000c\u0000o\u0000n\u0000t\u0000r\u0000a\u0000s\u0000t\u0000 \u0000c\u0000o\u0000m\u0000p\u0000l\u0000i\u0000a\u0000n\u0000c\u0000e\u0000 \u0000*\u0000/\u0000\r\u0000\n\u0000",
+      "blame": [
+        {
+          "start": 1,
+          "end": 1,
+          "sha": "91875acf98773063b0a4fe24d60fb75b6f89e705",
+          "evidence_ids": [
+            "commit:91875acf98773063b0a4fe24d60fb75b6f89e705"
+          ]
+        },
+        {
+          "start": 2,
+          "end": 2,
+          "sha": "a6dc797b8ae1e84225b332ff3da6dc5c1a28f38b",
+          "evidence_ids": [
+            "commit:a6dc797b8ae1e84225b332ff3da6dc5c1a28f38b"
+          ]
+        }
+      ],
+      "narrative": {
+        "schema_version": "1.0.0",
+        "path": "src/theme.css",
+        "source_ref": "fixtures/fixture-repo@91875acf98773063b0a4fe24d60fb75b6f89e705",
+        "sampled_history": false,
+        "claims": [
+          {
+            "claim_id": "clm_src_theme_css_1",
+            "text": "File src/theme.css was added to establish core repository functionality.",
+            "evidence_ids": [
+              "commit:91875acf98773063b0a4fe24d60fb75b6f89e705"
+            ],
+            "confidence_tier": "LOW",
+            "stated_vs_inferred": "inferred"
+          }
+        ]
+      }
+    },
+    {
+      "path": "src/ws.js",
+      "hotspot_rank": 3,
+      "change_count": 2,
+      "sampled_history": false,
+      "content": "��/\u0000/\u0000 \u0000W\u0000e\u0000b\u0000s\u0000o\u0000c\u0000k\u0000e\u0000t\u0000 \u0000l\u0000o\u0000o\u0000p\u0000 \u0000w\u0000i\u0000t\u0000h\u0000 \u0000c\u0000l\u0000e\u0000a\u0000r\u0000e\u0000d\u0000 \u0000l\u0000i\u0000s\u0000t\u0000e\u0000n\u0000e\u0000r\u0000s\u0000 \u0000t\u0000o\u0000 \u0000f\u0000i\u0000x\u0000 \u0000m\u0000e\u0000m\u0000o\u0000r\u0000y\u0000 \u0000l\u0000e\u0000a\u0000k\u0000\r\u0000\n\u0000",
+      "blame": [
+        {
+          "start": 1,
+          "end": 1,
+          "sha": "bf46fba22e9d50cdbedffd1acf38303b9013f64a",
+          "evidence_ids": [
+            "commit:bf46fba22e9d50cdbedffd1acf38303b9013f64a"
+          ]
+        },
+        {
+          "start": 2,
+          "end": 2,
+          "sha": "2db22241094e7271f65e24fba6d518c904cfc510",
+          "evidence_ids": [
+            "commit:2db22241094e7271f65e24fba6d518c904cfc510"
+          ]
+        }
+      ],
+      "narrative": {
+        "schema_version": "1.0.0",
+        "path": "src/ws.js",
+        "source_ref": "fixtures/fixture-repo@91875acf98773063b0a4fe24d60fb75b6f89e705",
+        "sampled_history": false,
+        "claims": [
+          {
+            "claim_id": "clm_src_ws_js_1",
+            "text": "File src/ws.js was added to establish core repository functionality.",
+            "evidence_ids": [
+              "commit:91875acf98773063b0a4fe24d60fb75b6f89e705"
+            ],
+            "confidence_tier": "LOW",
+            "stated_vs_inferred": "inferred"
+          }
+        ]
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "commit:0000000000000000000000000000000000000000",
+      "type": "commit",
+      "url": "https://github.com/fixtures/fixture-repo/commit/0000000000000000000000000000000000000000",
+      "title": "Uncommitted working tree changes",
+      "body": "Uncommitted working tree changes in local clone.",
+      "author": "local",
+      "created_at": "2026-09-19T15:21:18.552Z"
+    },
+    {
+      "id": "commit:a707132244217e5f5910db309f31c3d72d73a8df",
+      "type": "commit",
+      "url": "https://github.com/fixtures/fixture-repo/commit/a707132244217e5f5910db309f31c3d72d73a8df",
+      "title": "Replace legacy memory cache with SQLite to support offline mode (#1)",
+      "body": "Replace legacy memory cache with SQLite to support offline mode (#1)",
+      "author": "octocat",
+      "created_at": "2026-09-19T20:37:59+05:30"
+    },
+    {
+      "id": "commit:18a805e52b4cd429d0843e210bf5aa2694880358",
+      "type": "commit",
+      "url": "https://github.com/fixtures/fixture-repo/commit/18a805e52b4cd429d0843e210bf5aa2694880358",
+      "title": "Initial memory cache",
+      "body": "Initial memory cache",
+      "author": "octocat",
+      "created_at": "2026-09-19T20:37:58+05:30"
+    },
+    {
+      "id": "commit:91875acf98773063b0a4fe24d60fb75b6f89e705",
+      "type": "commit",
+      "url": "https://github.com/fixtures/fixture-repo/commit/91875acf98773063b0a4fe24d60fb75b6f89e705",
+      "title": "Update design tokens for dark theme contrast compliance",
+      "body": "Update design tokens for dark theme contrast compliance",
+      "author": "octocat",
+      "created_at": "2026-09-19T20:37:59+05:30"
+    },
+    {
+      "id": "commit:a6dc797b8ae1e84225b332ff3da6dc5c1a28f38b",
+      "type": "commit",
+      "url": "https://github.com/fixtures/fixture-repo/commit/a6dc797b8ae1e84225b332ff3da6dc5c1a28f38b",
+      "title": "Add theme CSS",
+      "body": "Add theme CSS",
+      "author": "octocat",
+      "created_at": "2026-09-19T20:37:59+05:30"
+    },
+    {
+      "id": "commit:bf46fba22e9d50cdbedffd1acf38303b9013f64a",
+      "type": "commit",
+      "url": "https://github.com/fixtures/fixture-repo/commit/bf46fba22e9d50cdbedffd1acf38303b9013f64a",
+      "title": "Fix memory leak in websocket event loop by clearing listeners (fixes #2)",
+      "body": "Fix memory leak in websocket event loop by clearing listeners (fixes #2)",
+      "author": "octocat",
+      "created_at": "2026-09-19T20:37:59+05:30"
+    },
+    {
+      "id": "commit:2db22241094e7271f65e24fba6d518c904cfc510",
+      "type": "commit",
+      "url": "https://github.com/fixtures/fixture-repo/commit/2db22241094e7271f65e24fba6d518c904cfc510",
+      "title": "Add websocket event loop",
+      "body": "Add websocket event loop",
+      "author": "octocat",
+      "created_at": "2026-09-19T20:37:58+05:30"
+    },
+    {
+      "id": "pr:1",
+      "type": "pull_request",
+      "url": "https://github.com/fixtures/fixture-repo/pull/1",
+      "title": "Replace memory cache with SQLite",
+      "body": "This PR replaces the legacy memory cache with SQLite to support offline mode.",
+      "author": "octocat",
+      "created_at": "2026-09-19T15:12:01.021Z"
+    },
+    {
+      "id": "pr:2",
+      "type": "pull_request",
+      "url": "https://github.com/fixtures/fixture-repo/pull/2",
+      "title": "Dummy PR 2",
+      "body": "Dummy body",
+      "author": "octocat",
+      "created_at": "2026-09-19T15:13:53.240Z"
+    },
+    {
+      "id": "issue:2",
+      "type": "issue",
+      "url": "https://github.com/fixtures/fixture-repo/issues/2",
+      "title": "Memory leak in websocket",
+      "body": "Fixed memory leak in websocket event loop by clearing listeners."
+    }
+  ]
+}

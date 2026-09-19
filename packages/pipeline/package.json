@@ -1,0 +1,30 @@
+{
+  "name": "@coldcase/pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/run.js",
+  "bin": {
+    "pipeline": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "pipeline": "node ./dist/cli.js"
+  },
+  "dependencies": {
+    "@coldcase/core": "*",
+    "@google/genai": "^0.2.0",
+    "commander": "^12.0.0",
+    "dotenv": "^18.0.1",
+    "groq-sdk": "^0.3.3",
+    "octokit": "^3.1.2",
+    "simple-git": "^3.22.0",
+    "sql.js": "^1.10.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "@types/sql.js": "^1.4.9",
+    "tsx": "^4.7.0"
+  }
+}

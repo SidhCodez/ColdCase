@@ -1,0 +1,25 @@
+{
+  "name": "coldcase",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/web",
+    "build": "npm run build --workspace=packages/core && npm run build --workspace=packages/pipeline && npm run build --workspace=apps/worker && npm run build --workspace=apps/web",
+    "test": "node node_modules/vitest/vitest.mjs run",
+    "pipeline": "npm run pipeline --workspace=packages/pipeline",
+    "eval": "node node_modules/tsx/dist/cli.mjs eval/run.ts"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vitest": "^1.2.2"
+  }
+}

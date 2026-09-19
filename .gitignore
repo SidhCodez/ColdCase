@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.env
+.env.local
+.cache/
+.work/
+*.log
+*.js.map
+*.d.ts
+*.d.ts.map
+Problem-statement-analysis.md
+
+# tsc output in source dirs (we use outDir: dist)
+packages/*/src/**/*.js
+packages/*/tests/**/*.js
+apps/*/src/**/*.js
+apps/*/*.js
+!apps/web/postcss.config.js
+!apps/web/tailwind.config.js

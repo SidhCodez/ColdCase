@@ -1,0 +1,3886 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-19T15:08:41.528Z",
+  "repo": {
+    "owner": "reduxjs",
+    "name": "redux-thunk",
+    "default_branch": "master",
+    "last_fetched_sha": "184205d49f707c6f203269e0d39ad85824801816"
+  },
+  "synthesis": {
+    "schema_version": "1.0.0",
+    "source_ref": "reduxjs/redux-thunk@184205d49f707c6f203269e0d39ad85824801816",
+    "eras": [
+      {
+        "name": "Initial Skeleton Era",
+        "date_range": {
+          "start": "2026-09-01",
+          "end": "2026-09-19"
+        },
+        "summary": "Foundation setup and core architecture design.",
+        "claim_ids": [
+          "clm_none_1789830521421",
+          "clm_none_1789830521423",
+          "clm_none_1789830521425",
+          "clm_none_1789830521426",
+          "clm_none_1789830521427"
+        ]
+      }
+    ],
+    "key_decisions": [
+      {
+        "text": "Adopted offline-first architecture with SQLite cache and JSON snapshots.",
+        "claim_ids": [
+          "clm_none_1789830521421",
+          "clm_none_1789830521423",
+          "clm_none_1789830521425"
+        ]
+      }
+    ]
+  },
+  "stats": {
+    "files_analyzed": 5,
+    "files_total": 5,
+    "confidence_mix": {
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0,
+      "NONE": 5
+    }
+  },
+  "files": [
+    {
+      "path": "package.json",
+      "hotspot_rank": 1,
+      "change_count": 67,
+      "sampled_history": false,
+      "content": "{\n  \"name\": \"redux-thunk\",\n  \"version\": \"3.1.0\",\n  \"license\": \"MIT\",\n  \"description\": \"Thunk middleware for Redux.\",\n  \"repository\": \"github:reduxjs/redux-thunk\",\n  \"bugs\": \"https://github.com/reduxjs/redux-thunk/issues\",\n  \"homepage\": \"https://github.com/reduxjs/redux-thunk\",\n  \"keywords\": [\n    \"redux\",\n    \"thunk\",\n    \"middleware\",\n    \"redux-middleware\",\n    \"flux\"\n  ],\n  \"author\": \"Dan Abramov <dan.abramov@me.com>\",\n  \"main\": \"dist/cjs/redux-thunk.cjs\",\n  \"module\": \"dist/redux-thunk.legacy-esm.js\",\n  \"types\": \"dist/redux-thunk.d.ts\",\n  \"exports\": {\n    \"./package.json\": \"./package.json\",\n    \".\": {\n      \"types\": \"./dist/redux-thunk.d.ts\",\n      \"import\": \"./dist/redux-thunk.mjs\",\n      \"default\": \"./dist/cjs/redux-thunk.cjs\"\n    }\n  },\n  \"sideEffects\": false,\n  \"files\": [\n    \"dist\",\n    \"src\",\n    \"extend-redux.d.ts\"\n  ],\n  \"scripts\": {\n    \"clean\": \"rimraf lib dist es\",\n    \"prepublishOnly\": \"yarn clean && yarn lint && yarn test && yarn build\",\n    \"format\": \"prettier --write \\\"{src,test,typescript_test}/**/*.{js,ts}\\\"\",\n    \"format:check\": \"prettier --check \\\"{src,test,typescript_test}/**/*.{js,ts}\\\"\",\n    \"lint\": \"eslint \\\"{src,test,typescript_test}/**/*.{js,ts}\\\"\",\n    \"test\": \"vitest --run --typecheck\",\n    \"test:watch\": \"vitest --watch\",\n    \"test:cov\": \"vitest --run --coverage\",\n    \"type-tests\": \"tsc --noEmit -p tsconfig.test.json\",\n    \"build\": \"yarn clean && tsup\",\n    \"prepack\": \"yarn build\"\n  },\n  \"peerDependencies\": {\n    \"redux\": \"^5.0.0\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"^22.7.5\",\n    \"@typescript-eslint/eslint-plugin\": \"^5.1.0\",\n    \"@typescript-eslint/parser\": \"^5.1.0\",\n    \"cross-env\": \"^7.0.3\",\n    \"eslint\": \"^7.32.0\",\n    \"eslint-config-prettier\": \"^8.3.0\",\n    \"prettier\": \"^3.3.3\",\n    \"redux\": \"^5\",\n    \"rimraf\": \"^3.0.2\",\n    \"tsup\": \"7.0.0\",\n    \"tsx\": \"^4.19.1\",\n    \"typescript\": \"^5.8.2\",\n    \"vitest\": \"^1.6.0\"\n  },\n  \"packageManager\": \"yarn@4.4.1\"\n}\n",
+      "blame": [
+        {
+          "start": 1,
+          "end": 2,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 3,
+          "end": 3,
+          "sha": "88008ea0642596595773c8d84a6b32c62e54ac12",
+          "evidence_ids": [
+            "commit:88008ea0642596595773c8d84a6b32c62e54ac12"
+          ]
+        },
+        {
+          "start": 4,
+          "end": 4,
+          "sha": "82142b8f974fd988761bc7261a6a39cdf1c4bcb5",
+          "evidence_ids": [
+            "commit:82142b8f974fd988761bc7261a6a39cdf1c4bcb5"
+          ]
+        },
+        {
+          "start": 5,
+          "end": 5,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 6,
+          "end": 16,
+          "sha": "82142b8f974fd988761bc7261a6a39cdf1c4bcb5",
+          "evidence_ids": [
+            "commit:82142b8f974fd988761bc7261a6a39cdf1c4bcb5"
+          ]
+        },
+        {
+          "start": 17,
+          "end": 17,
+          "sha": "dfabe7ee7d59169a4e0ccd271a376a12fa433911",
+          "evidence_ids": [
+            "commit:dfabe7ee7d59169a4e0ccd271a376a12fa433911"
+          ]
+        },
+        {
+          "start": 18,
+          "end": 18,
+          "sha": "c0d0294356fc5166ffc8831ed37fcbb8261cb3e6",
+          "evidence_ids": [
+            "commit:c0d0294356fc5166ffc8831ed37fcbb8261cb3e6"
+          ]
+        },
+        {
+          "start": 19,
+          "end": 19,
+          "sha": "dfabe7ee7d59169a4e0ccd271a376a12fa433911",
+          "evidence_ids": [
+            "commit:dfabe7ee7d59169a4e0ccd271a376a12fa433911"
+          ]
+        },
+        {
+          "start": 20,
+          "end": 22,
+          "sha": "0ddba7627daab3b992ef8c7d45047b3de821045b",
+          "evidence_ids": [
+            "commit:0ddba7627daab3b992ef8c7d45047b3de821045b"
+          ]
+        },
+        {
+          "start": 23,
+          "end": 25,
+          "sha": "dfabe7ee7d59169a4e0ccd271a376a12fa433911",
+          "evidence_ids": [
+            "commit:dfabe7ee7d59169a4e0ccd271a376a12fa433911"
+          ]
+        },
+        {
+          "start": 26,
+          "end": 27,
+          "sha": "0ddba7627daab3b992ef8c7d45047b3de821045b",
+          "evidence_ids": [
+            "commit:0ddba7627daab3b992ef8c7d45047b3de821045b"
+          ]
+        },
+        {
+          "start": 28,
+          "end": 28,
+          "sha": "7b78677af242d7a31400b1a38cc0df4ea5d10c66",
+          "evidence_ids": [
+            "commit:7b78677af242d7a31400b1a38cc0df4ea5d10c66"
+          ]
+        },
+        {
+          "start": 29,
+          "end": 29,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 30,
+          "end": 30,
+          "sha": "b79769c84846e83d03f6d2b879e4f02317218ce7",
+          "evidence_ids": [
+            "commit:b79769c84846e83d03f6d2b879e4f02317218ce7"
+          ]
+        },
+        {
+          "start": 31,
+          "end": 31,
+          "sha": "4806e1528dda77bad9647a81d07ac6fbd1c3fd3d",
+          "evidence_ids": [
+            "commit:4806e1528dda77bad9647a81d07ac6fbd1c3fd3d"
+          ]
+        },
+        {
+          "start": 32,
+          "end": 32,
+          "sha": "b79769c84846e83d03f6d2b879e4f02317218ce7",
+          "evidence_ids": [
+            "commit:b79769c84846e83d03f6d2b879e4f02317218ce7"
+          ]
+        },
+        {
+          "start": 33,
+          "end": 35,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 36,
+          "end": 36,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 37,
+          "end": 39,
+          "sha": "309fac806ff4e3decada7df1c07cee4a3db54c91",
+          "evidence_ids": [
+            "commit:309fac806ff4e3decada7df1c07cee4a3db54c91"
+          ]
+        },
+        {
+          "start": 40,
+          "end": 44,
+          "sha": "bf04cf7523df80110cfe28b13bc7eb3f40bed86f",
+          "evidence_ids": [
+            "commit:bf04cf7523df80110cfe28b13bc7eb3f40bed86f"
+          ]
+        },
+        {
+          "start": 45,
+          "end": 45,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 46,
+          "end": 46,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 47,
+          "end": 47,
+          "sha": "cea31033724f4e3ae6eaa2258bf298bddd7dccd4",
+          "evidence_ids": [
+            "commit:cea31033724f4e3ae6eaa2258bf298bddd7dccd4"
+          ]
+        },
+        {
+          "start": 48,
+          "end": 48,
+          "sha": "b419ba6a3e6b57ec30c372c3ad9af73065ae833d",
+          "evidence_ids": [
+            "commit:b419ba6a3e6b57ec30c372c3ad9af73065ae833d"
+          ]
+        },
+        {
+          "start": 49,
+          "end": 49,
+          "sha": "cea31033724f4e3ae6eaa2258bf298bddd7dccd4",
+          "evidence_ids": [
+            "commit:cea31033724f4e3ae6eaa2258bf298bddd7dccd4"
+          ]
+        },
+        {
+          "start": 50,
+          "end": 50,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 51,
+          "end": 51,
+          "sha": "9161c48b6696bc479b684446a09b60ba286d9d9b",
+          "evidence_ids": [
+            "commit:9161c48b6696bc479b684446a09b60ba286d9d9b"
+          ]
+        },
+        {
+          "start": 52,
+          "end": 56,
+          "sha": "4bbf93bf6803839a34ad8192e7419c669990a90a",
+          "evidence_ids": [
+            "commit:4bbf93bf6803839a34ad8192e7419c669990a90a"
+          ]
+        },
+        {
+          "start": 57,
+          "end": 57,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 58,
+          "end": 58,
+          "sha": "b419ba6a3e6b57ec30c372c3ad9af73065ae833d",
+          "evidence_ids": [
+            "commit:b419ba6a3e6b57ec30c372c3ad9af73065ae833d"
+          ]
+        },
+        {
+          "start": 59,
+          "end": 59,
+          "sha": "4bbf93bf6803839a34ad8192e7419c669990a90a",
+          "evidence_ids": [
+            "commit:4bbf93bf6803839a34ad8192e7419c669990a90a"
+          ]
+        },
+        {
+          "start": 60,
+          "end": 60,
+          "sha": "aaac9c72ae1e079898fc8046da0c2d1bc5ab9d24",
+          "evidence_ids": [
+            "commit:aaac9c72ae1e079898fc8046da0c2d1bc5ab9d24"
+          ]
+        },
+        {
+          "start": 61,
+          "end": 61,
+          "sha": "9161c48b6696bc479b684446a09b60ba286d9d9b",
+          "evidence_ids": [
+            "commit:9161c48b6696bc479b684446a09b60ba286d9d9b"
+          ]
+        },
+        {
+          "start": 62,
+          "end": 62,
+          "sha": "53b21ca5ac8becfcd9685b8667c30c570057ce22",
+          "evidence_ids": [
+            "commit:53b21ca5ac8becfcd9685b8667c30c570057ce22"
+          ]
+        },
+        {
+          "start": 63,
+          "end": 63,
+          "sha": "bf04cf7523df80110cfe28b13bc7eb3f40bed86f",
+          "evidence_ids": [
+            "commit:bf04cf7523df80110cfe28b13bc7eb3f40bed86f"
+          ]
+        },
+        {
+          "start": 64,
+          "end": 64,
+          "sha": "138b8b72bbceead5f6ecd30a20539827e0f77a5c",
+          "evidence_ids": [
+            "commit:138b8b72bbceead5f6ecd30a20539827e0f77a5c"
+          ]
+        },
+        {
+          "start": 65,
+          "end": 65,
+          "sha": "58c45ac5370c3b28d9dd746cc5fee627c61a712e",
+          "evidence_ids": [
+            "commit:58c45ac5370c3b28d9dd746cc5fee627c61a712e"
+          ]
+        },
+        {
+          "start": 66,
+          "end": 66,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        }
+      ],
+      "narrative": {
+        "schema_version": "1.0.0",
+        "path": "package.json",
+        "source_ref": "reduxjs/redux-thunk@184205d49f707c6f203269e0d39ad85824801816",
+        "sampled_history": false,
+        "claims": [
+          {
+            "claim_id": "clm_none_1789830521421",
+            "text": "No recorded reason found",
+            "evidence_ids": [],
+            "confidence_tier": "NONE",
+            "stated_vs_inferred": "inferred"
+          }
+        ]
+      }
+    },
+    {
+      "path": "README.md",
+      "hotspot_rank": 2,
+      "change_count": 34,
+      "sampled_history": false,
+      "content": "# Redux Thunk\n\nThunk [middleware](https://redux.js.org/tutorials/fundamentals/part-4-store#middleware) for Redux. It allows writing functions with logic inside that can interact with a Redux store's `dispatch` and `getState` methods.\n\nFor complete usage instructions and useful patterns, see the [Redux docs **Writing Logic with Thunks** page](https://redux.js.org/usage/writing-logic-thunks).\n\n![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/reduxjs/redux-thunk/test.yml?branch=master)\n[![npm version](https://img.shields.io/npm/v/redux-thunk.svg?style=flat-square)](https://www.npmjs.com/package/redux-thunk)\n[![npm downloads](https://img.shields.io/npm/dm/redux-thunk.svg?style=flat-square)](https://www.npmjs.com/package/redux-thunk)\n\n## Installation and Setup\n\n### Redux Toolkit\n\nIf you're using [our official Redux Toolkit package](https://redux-toolkit.js.org) as recommended, there's nothing to install - RTK's `configureStore` API already adds the thunk middleware by default:\n\n```js\nimport { configureStore } from '@reduxjs/toolkit'\n\nimport todosReducer from './features/todos/todosSlice'\nimport filtersReducer from './features/filters/filtersSlice'\n\nconst store = configureStore({\n  reducer: {\n    todos: todosReducer,\n    filters: filtersReducer,\n  },\n})\n\n// The thunk middleware was automatically added\n```\n\n### Manual Setup\n\nIf you're using the basic Redux `createStore` API and need to set this up manually, first add the `redux-thunk` package:\n\n```sh\nnpm install redux-thunk\n\nyarn add redux-thunk\n```\n\nThe thunk middleware is a named export.\n\n<details>\n<summary><b>More Details: Importing the thunk middleware</b></summary>\n\nIf you're using ES modules:\n\n```js\nimport { thunk } from 'redux-thunk'\n```\n\nIf you use Redux Thunk in a CommonJS environment:\n\n```js\nconst { thunk } = require('redux-thunk')\n```\n\n</details>\n\nThen, to enable Redux Thunk, use\n[`applyMiddleware()`](https://redux.js.org/api/applymiddleware):\n\n```js\nimport { createStore, applyMiddleware } from 'redux'\nimport { thunk } from 'redux-thunk'\nimport rootReducer from './reducers/index'\n\nconst store = createStore(rootReducer, applyMiddleware(thunk))\n```\n\n### Injecting a Custom Argument\n\nSince 2.1.0, Redux Thunk supports injecting a custom argument into the thunk middleware. This is typically useful for cases like using an API service layer that could be swapped out for a mock service in tests.\n\nFor Redux Toolkit, the `getDefaultMiddleware` callback inside of `configureStore` lets you pass in a custom `extraArgument`:\n\n```js\nimport { configureStore } from '@reduxjs/toolkit'\nimport rootReducer from './reducer'\nimport { myCustomApiService } from './api'\n\nconst store = configureStore({\n  reducer: rootReducer,\n  middleware: getDefaultMiddleware =>\n    getDefaultMiddleware({\n      thunk: {\n        extraArgument: myCustomApiService,\n      },\n    }),\n})\n\n// later\nfunction fetchUser(id) {\n  // The `extraArgument` is the third arg for thunk functions\n  return (dispatch, getState, api) => {\n    // you can use api here\n  }\n}\n```\n\nIf you need to pass in multiple values, combine them into a single object:\n\n```js\nconst store = configureStore({\n  reducer: rootReducer,\n  middleware: getDefaultMiddleware =>\n    getDefaultMiddleware({\n      thunk: {\n        extraArgument: {\n          api: myCustomApiService,\n          otherValue: 42,\n        },\n      },\n    }),\n})\n\n// later\nfunction fetchUser(id) {\n  return (dispatch, getState, { api, otherValue }) => {\n    // you can use api and something else here\n  }\n}\n```\n\nIf you're setting up the store by hand, the named export `withExtraArgument()` function should be used to generate the correct thunk middleware:\n\n```js\nconst store = createStore(reducer, applyMiddleware(withExtraArgument(api)))\n```\n\n## Why Do I Need This?\n\nWith a plain basic Redux store, you can only do simple synchronous updates by\ndispatching an action. Middleware extends the store's abilities, and lets you\nwrite async logic that interacts with the store.\n\nThunks are the recommended middleware for basic Redux side effects logic,\nincluding complex synchronous logic that needs access to the store, and simple\nasync logic like AJAX requests.\n\nFor more details on why thunks are useful, see:\n\n- **Redux docs: Writing Logic with Thunks**  \n  https://redux.js.org/usage/writing-logic-thunks  \n  The official usage guide page on thunks. Covers why they exist, how the thunk middleware works, and useful patterns for using thunks.\n\n- **Stack Overflow: Dispatching Redux Actions with a Timeout**  \n  http://stackoverflow.com/questions/35411423/how-to-dispatch-a-redux-action-with-a-timeout/35415559#35415559  \n  Dan Abramov explains the basics of managing async behavior in Redux, walking\n  through a progressive series of approaches (inline async calls, async action\n  creators, thunk middleware).\n\n- **Stack Overflow: Why do we need middleware for async flow in Redux?**  \n  http://stackoverflow.com/questions/34570758/why-do-we-need-middleware-for-async-flow-in-redux/34599594#34599594  \n  Dan Abramov gives reasons for using thunks and async middleware, and some\n  useful patterns for using thunks.\n\n- **What the heck is a \"thunk\"?**  \n  https://daveceddia.com/what-is-a-thunk/  \n  A quick explanation for what the word \"thunk\" means in general, and for Redux\n  specifically.\n\n- **Thunks in Redux: The Basics**  \n  https://medium.com/fullstack-academy/thunks-in-redux-the-basics-85e538a3fe60  \n  A detailed look at what thunks are, what they solve, and how to use them.\n\nYou may also want to read the\n**[Redux FAQ entry on choosing which async middleware to use](https://redux.js.org/faq/actions#what-async-middleware-should-i-use-how-do-you-decide-between-thunks-sagas-observables-or-something-else)**.\n\nWhile the thunk middleware is not directly included with the Redux core library,\nit is used by default in our\n**[`@reduxjs/toolkit` package](https://github.com/reduxjs/redux-toolkit)**.\n\n## Motivation\n\nRedux Thunk [middleware](https://redux.js.org/tutorials/fundamentals/part-4-store#middleware)\nallows you to write action creators that return a function instead of an action.\nThe thunk can be used to delay the dispatch of an action, or to dispatch only if\na certain condition is met. The inner function receives the store methods\n`dispatch` and `getState` as parameters.\n\nAn action creator that returns a function to perform asynchronous dispatch:\n\n```js\nconst INCREMENT_COUNTER = 'INCREMENT_COUNTER'\n\nfunction increment() {\n  return {\n    type: INCREMENT_COUNTER,\n  }\n}\n\nfunction incrementAsync() {\n  return dispatch => {\n    setTimeout(() => {\n      // Yay! Can invoke sync or async actions with `dispatch`\n      dispatch(increment())\n    }, 1000)\n  }\n}\n```\n\nAn action creator that returns a function to perform conditional dispatch:\n\n```js\nfunction incrementIfOdd() {\n  return (dispatch, getState) => {\n    const { counter } = getState()\n\n    if (counter % 2 === 0) {\n      return\n    }\n\n    dispatch(increment())\n  }\n}\n```\n\n## What’s a thunk?!\n\nA [thunk](https://en.wikipedia.org/wiki/Thunk) is a function that wraps an\nexpression to delay its evaluation.\n\n```js\n// calculation of 1 + 2 is immediate\n// x === 3\nlet x = 1 + 2\n\n// calculation of 1 + 2 is delayed\n// foo can be called later to perform the calculation\n// foo is a thunk!\nlet foo = () => 1 + 2\n```\n\nThe term [originated](https://en.wikipedia.org/wiki/Thunk#cite_note-1) as a\nhumorous past-tense version of \"think\".\n\n## Composition\n\nAny return value from the inner function will be available as the return value\nof `dispatch` itself. This is convenient for orchestrating an asynchronous\ncontrol flow with thunk action creators dispatching each other and returning\nPromises to wait for each other’s completion:\n\n```js\nimport { createStore, applyMiddleware } from 'redux'\nimport { thunk } from 'redux-thunk'\nimport rootReducer from './reducers'\n\n// Note: this API requires redux@>=3.1.0\nconst store = createStore(rootReducer, applyMiddleware(thunk))\n\nfunction fetchSecretSauce() {\n  return fetch('https://www.google.com/search?q=secret+sauce')\n}\n\n// These are the normal action creators you have seen so far.\n// The actions they return can be dispatched without any middleware.\n// However, they only express “facts” and not the “async flow”.\n\nfunction makeASandwich(forPerson, secretSauce) {\n  return {\n    type: 'MAKE_SANDWICH',\n    forPerson,\n    secretSauce,\n  }\n}\n\nfunction apologize(fromPerson, toPerson, error) {\n  return {\n    type: 'APOLOGIZE',\n    fromPerson,\n    toPerson,\n    error,\n  }\n}\n\nfunction withdrawMoney(amount) {\n  return {\n    type: 'WITHDRAW',\n    amount,\n  }\n}\n\n// Even without middleware, you can dispatch an action:\nstore.dispatch(withdrawMoney(100))\n\n// But what do you do when you need to start an asynchronous action,\n// such as an API call, or a router transition?\n\n// Meet thunks.\n// A thunk in this context is a function that can be dispatched to perform async\n// activity and can dispatch actions and read state.\n// This is an action creator that returns a thunk:\nfunction makeASandwichWithSecretSauce(forPerson) {\n  // We can invert control here by returning a function - the \"thunk\".\n  // When this function is passed to `dispatch`, the thunk middleware will intercept it,\n  // and call it with `dispatch` and `getState` as arguments.\n  // This gives the thunk function the ability to run some logic, and still interact with the store.\n  return function (dispatch) {\n    return fetchSecretSauce().then(\n      sauce => dispatch(makeASandwich(forPerson, sauce)),\n      error => dispatch(apologize('The Sandwich Shop', forPerson, error)),\n    )\n  }\n}\n\n// Thunk middleware lets me dispatch thunk async actions\n// as if they were actions!\n\nstore.dispatch(makeASandwichWithSecretSauce('Me'))\n\n// It even takes care to return the thunk’s return value\n// from the dispatch, so I can chain Promises as long as I return them.\n\nstore.dispatch(makeASandwichWithSecretSauce('My partner')).then(() => {\n  console.log('Done!')\n})\n\n// In fact I can write action creators that dispatch\n// actions and async actions from other action creators,\n// and I can build my control flow with Promises.\n\nfunction makeSandwichesForEverybody() {\n  return function (dispatch, getState) {\n    if (!getState().sandwiches.isShopOpen) {\n      // You don’t have to return Promises, but it’s a handy convention\n      // so the caller can always call .then() on async dispatch result.\n\n      return Promise.resolve()\n    }\n\n    // We can dispatch both plain object actions and other thunks,\n    // which lets us compose the asynchronous actions in a single flow.\n\n    return dispatch(makeASandwichWithSecretSauce('My Grandma'))\n      .then(() =>\n        Promise.all([\n          dispatch(makeASandwichWithSecretSauce('Me')),\n          dispatch(makeASandwichWithSecretSauce('My wife')),\n        ]),\n      )\n      .then(() => dispatch(makeASandwichWithSecretSauce('Our kids')))\n      .then(() =>\n        dispatch(\n          getState().myMoney > 42\n            ? withdrawMoney(42)\n            : apologize('Me', 'The Sandwich Shop'),\n        ),\n      )\n  }\n}\n\n// This is very useful for server side rendering, because I can wait\n// until data is available, then synchronously render the app.\n\nstore\n  .dispatch(makeSandwichesForEverybody())\n  .then(() =>\n    response.send(ReactDOMServer.renderToString(<MyApp store={store} />)),\n  )\n\n// I can also dispatch a thunk async action from a component\n// any time its props change to load the missing data.\n\nimport { connect } from 'react-redux'\nimport { Component } from 'react'\n\nclass SandwichShop extends Component {\n  componentDidMount() {\n    this.props.dispatch(makeASandwichWithSecretSauce(this.props.forPerson))\n  }\n\n  componentDidUpdate(prevProps) {\n    if (prevProps.forPerson !== this.props.forPerson) {\n      this.props.dispatch(makeASandwichWithSecretSauce(this.props.forPerson))\n    }\n  }\n\n  render() {\n    return <p>{this.props.sandwiches.join('mustard')}</p>\n  }\n}\n\nexport default connect(state => ({\n  sandwiches: state.sandwiches,\n}))(SandwichShop)\n```\n\n## License\n\nMIT\n",
+      "blame": [
+        {
+          "start": 1,
+          "end": 1,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 2,
+          "end": 2,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 3,
+          "end": 5,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 6,
+          "end": 6,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 7,
+          "end": 7,
+          "sha": "3eea8af58dfaede8139564fad61570df4cbb604d",
+          "evidence_ids": [
+            "commit:3eea8af58dfaede8139564fad61570df4cbb604d"
+          ]
+        },
+        {
+          "start": 8,
+          "end": 10,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 11,
+          "end": 25,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 26,
+          "end": 27,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 28,
+          "end": 36,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 37,
+          "end": 37,
+          "sha": "290acf90fa5afac5b49f286bb3d8fc51aa864ed3",
+          "evidence_ids": [
+            "commit:290acf90fa5afac5b49f286bb3d8fc51aa864ed3"
+          ]
+        },
+        {
+          "start": 38,
+          "end": 38,
+          "sha": "dc5fc226c6015f426f16f5f6f9d23c80d14a06c8",
+          "evidence_ids": [
+            "commit:dc5fc226c6015f426f16f5f6f9d23c80d14a06c8"
+          ]
+        },
+        {
+          "start": 39,
+          "end": 40,
+          "sha": "b04e04ca9e4f9671ab5bd7f579a5de9f3ebf3c32",
+          "evidence_ids": [
+            "commit:b04e04ca9e4f9671ab5bd7f579a5de9f3ebf3c32"
+          ]
+        },
+        {
+          "start": 41,
+          "end": 42,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 43,
+          "end": 43,
+          "sha": "b721292b350302c9480b4d7ec0b0b79ad7055cdc",
+          "evidence_ids": [
+            "commit:b721292b350302c9480b4d7ec0b0b79ad7055cdc"
+          ]
+        },
+        {
+          "start": 44,
+          "end": 44,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 45,
+          "end": 46,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 47,
+          "end": 47,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 48,
+          "end": 50,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 51,
+          "end": 51,
+          "sha": "b721292b350302c9480b4d7ec0b0b79ad7055cdc",
+          "evidence_ids": [
+            "commit:b721292b350302c9480b4d7ec0b0b79ad7055cdc"
+          ]
+        },
+        {
+          "start": 52,
+          "end": 53,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 54,
+          "end": 54,
+          "sha": "b721292b350302c9480b4d7ec0b0b79ad7055cdc",
+          "evidence_ids": [
+            "commit:b721292b350302c9480b4d7ec0b0b79ad7055cdc"
+          ]
+        },
+        {
+          "start": 55,
+          "end": 55,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 56,
+          "end": 57,
+          "sha": "b721292b350302c9480b4d7ec0b0b79ad7055cdc",
+          "evidence_ids": [
+            "commit:b721292b350302c9480b4d7ec0b0b79ad7055cdc"
+          ]
+        },
+        {
+          "start": 58,
+          "end": 59,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 60,
+          "end": 66,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 67,
+          "end": 67,
+          "sha": "b721292b350302c9480b4d7ec0b0b79ad7055cdc",
+          "evidence_ids": [
+            "commit:b721292b350302c9480b4d7ec0b0b79ad7055cdc"
+          ]
+        },
+        {
+          "start": 68,
+          "end": 70,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 71,
+          "end": 72,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 73,
+          "end": 88,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 89,
+          "end": 91,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 92,
+          "end": 112,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 113,
+          "end": 116,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 117,
+          "end": 126,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 127,
+          "end": 127,
+          "sha": "01e31c0fe9efe57ba4a2fd89d16f1ce5cca7661b",
+          "evidence_ids": [
+            "commit:01e31c0fe9efe57ba4a2fd89d16f1ce5cca7661b"
+          ]
+        },
+        {
+          "start": 128,
+          "end": 129,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 130,
+          "end": 130,
+          "sha": "01e31c0fe9efe57ba4a2fd89d16f1ce5cca7661b",
+          "evidence_ids": [
+            "commit:01e31c0fe9efe57ba4a2fd89d16f1ce5cca7661b"
+          ]
+        },
+        {
+          "start": 131,
+          "end": 131,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 132,
+          "end": 134,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 135,
+          "end": 135,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 136,
+          "end": 136,
+          "sha": "80296ec9ef49410e2eb29b3531ceac094d5e03bd",
+          "evidence_ids": [
+            "commit:80296ec9ef49410e2eb29b3531ceac094d5e03bd"
+          ]
+        },
+        {
+          "start": 137,
+          "end": 137,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 138,
+          "end": 138,
+          "sha": "9eb31ec01f4cf9aee95d76738c88f69b9b8e0b13",
+          "evidence_ids": [
+            "commit:9eb31ec01f4cf9aee95d76738c88f69b9b8e0b13"
+          ]
+        },
+        {
+          "start": 139,
+          "end": 141,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 142,
+          "end": 142,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 143,
+          "end": 144,
+          "sha": "b3041316dc15b1e5489388ef75465140adc323bc",
+          "evidence_ids": [
+            "commit:b3041316dc15b1e5489388ef75465140adc323bc"
+          ]
+        },
+        {
+          "start": 145,
+          "end": 146,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 147,
+          "end": 147,
+          "sha": "ac9beb25690f1596462c3b256521d558fc5b36e7",
+          "evidence_ids": [
+            "commit:ac9beb25690f1596462c3b256521d558fc5b36e7"
+          ]
+        },
+        {
+          "start": 148,
+          "end": 148,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 149,
+          "end": 150,
+          "sha": "b3041316dc15b1e5489388ef75465140adc323bc",
+          "evidence_ids": [
+            "commit:b3041316dc15b1e5489388ef75465140adc323bc"
+          ]
+        },
+        {
+          "start": 151,
+          "end": 153,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 154,
+          "end": 156,
+          "sha": "b3041316dc15b1e5489388ef75465140adc323bc",
+          "evidence_ids": [
+            "commit:b3041316dc15b1e5489388ef75465140adc323bc"
+          ]
+        },
+        {
+          "start": 157,
+          "end": 158,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 159,
+          "end": 161,
+          "sha": "b3041316dc15b1e5489388ef75465140adc323bc",
+          "evidence_ids": [
+            "commit:b3041316dc15b1e5489388ef75465140adc323bc"
+          ]
+        },
+        {
+          "start": 162,
+          "end": 163,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 164,
+          "end": 168,
+          "sha": "b3041316dc15b1e5489388ef75465140adc323bc",
+          "evidence_ids": [
+            "commit:b3041316dc15b1e5489388ef75465140adc323bc"
+          ]
+        },
+        {
+          "start": 169,
+          "end": 170,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 171,
+          "end": 171,
+          "sha": "614245356399f3a07d17431928f612e1d2d0037c",
+          "evidence_ids": [
+            "commit:614245356399f3a07d17431928f612e1d2d0037c"
+          ]
+        },
+        {
+          "start": 172,
+          "end": 173,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 174,
+          "end": 174,
+          "sha": "c6a7015f76bcd461831564e543997896229dcff2",
+          "evidence_ids": [
+            "commit:c6a7015f76bcd461831564e543997896229dcff2"
+          ]
+        },
+        {
+          "start": 175,
+          "end": 177,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 178,
+          "end": 178,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 179,
+          "end": 182,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 183,
+          "end": 186,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 187,
+          "end": 187,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 188,
+          "end": 190,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 191,
+          "end": 191,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 192,
+          "end": 192,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 193,
+          "end": 195,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 196,
+          "end": 196,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 197,
+          "end": 198,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 199,
+          "end": 201,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 202,
+          "end": 209,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 210,
+          "end": 210,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 211,
+          "end": 212,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 213,
+          "end": 213,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 214,
+          "end": 215,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 216,
+          "end": 217,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 218,
+          "end": 222,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 223,
+          "end": 224,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 225,
+          "end": 228,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 229,
+          "end": 229,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 230,
+          "end": 233,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 234,
+          "end": 234,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 235,
+          "end": 236,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 237,
+          "end": 238,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 239,
+          "end": 241,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 242,
+          "end": 245,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 246,
+          "end": 247,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 248,
+          "end": 248,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 249,
+          "end": 249,
+          "sha": "2fbc5351b9c554afa2b7ba4cde4ef314bc54047c",
+          "evidence_ids": [
+            "commit:2fbc5351b9c554afa2b7ba4cde4ef314bc54047c"
+          ]
+        },
+        {
+          "start": 250,
+          "end": 250,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 251,
+          "end": 252,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 253,
+          "end": 253,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 254,
+          "end": 255,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 256,
+          "end": 256,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 257,
+          "end": 266,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 267,
+          "end": 267,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 268,
+          "end": 268,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 269,
+          "end": 275,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 276,
+          "end": 276,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 277,
+          "end": 277,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 278,
+          "end": 282,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 283,
+          "end": 283,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 284,
+          "end": 284,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 285,
+          "end": 287,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 288,
+          "end": 288,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 289,
+          "end": 293,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 294,
+          "end": 296,
+          "sha": "bacc013b2dba16f412accbd769f434b366ebdf93",
+          "evidence_ids": [
+            "commit:bacc013b2dba16f412accbd769f434b366ebdf93"
+          ]
+        },
+        {
+          "start": 297,
+          "end": 297,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 298,
+          "end": 301,
+          "sha": "bacc013b2dba16f412accbd769f434b366ebdf93",
+          "evidence_ids": [
+            "commit:bacc013b2dba16f412accbd769f434b366ebdf93"
+          ]
+        },
+        {
+          "start": 302,
+          "end": 303,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 304,
+          "end": 304,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 305,
+          "end": 305,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 306,
+          "end": 307,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 308,
+          "end": 312,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 313,
+          "end": 313,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 314,
+          "end": 317,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 318,
+          "end": 318,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 319,
+          "end": 320,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 321,
+          "end": 331,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 332,
+          "end": 332,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 333,
+          "end": 337,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 338,
+          "end": 339,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 340,
+          "end": 341,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 342,
+          "end": 343,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 344,
+          "end": 344,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 345,
+          "end": 349,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 350,
+          "end": 351,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 352,
+          "end": 353,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 354,
+          "end": 358,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 359,
+          "end": 361,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 362,
+          "end": 362,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 363,
+          "end": 363,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 364,
+          "end": 367,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 368,
+          "end": 369,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 370,
+          "end": 372,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 373,
+          "end": 373,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 374,
+          "end": 375,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 376,
+          "end": 377,
+          "sha": "be1265dd4c91e7e0b18330332c2d6c908fb68220",
+          "evidence_ids": [
+            "commit:be1265dd4c91e7e0b18330332c2d6c908fb68220"
+          ]
+        },
+        {
+          "start": 378,
+          "end": 378,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 379,
+          "end": 382,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 383,
+          "end": 383,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 384,
+          "end": 386,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 387,
+          "end": 387,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 388,
+          "end": 388,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 389,
+          "end": 389,
+          "sha": "d40a51f331cea2ec014919313080303ca7a1fbe3",
+          "evidence_ids": [
+            "commit:d40a51f331cea2ec014919313080303ca7a1fbe3"
+          ]
+        },
+        {
+          "start": 390,
+          "end": 394,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        }
+      ],
+      "narrative": {
+        "schema_version": "1.0.0",
+        "path": "README.md",
+        "source_ref": "reduxjs/redux-thunk@184205d49f707c6f203269e0d39ad85824801816",
+        "sampled_history": false,
+        "claims": [
+          {
+            "claim_id": "clm_none_1789830521423",
+            "text": "No recorded reason found",
+            "evidence_ids": [],
+            "confidence_tier": "NONE",
+            "stated_vs_inferred": "inferred"
+          }
+        ]
+      }
+    },
+    {
+      "path": ".github/workflows/test.yml",
+      "hotspot_rank": 3,
+      "change_count": 24,
+      "sampled_history": false,
+      "content": "name: CI\n\non: [push, pull_request, workflow_dispatch]\n\njobs:\n  build:\n    name: Lint, Test, Build & Pack on Node ${{ matrix.node }}\n    runs-on: ubuntu-latest\n    strategy:\n      matrix:\n        node: ['22.x']\n\n    steps:\n      - name: Checkout repo\n        uses: actions/checkout@v4\n\n      - name: Use Node ${{ matrix.node }}\n        uses: actions/setup-node@v4\n        with:\n          node-version: ${{ matrix.node }}\n          cache: 'yarn'\n\n      - name: Install deps\n        run: yarn install\n\n      # Read existing version, reuse that, add a Git short hash\n      - name: Set build version to Git commit\n        run: yarn tsx scripts/writeGitVersion.mts $(git rev-parse --short HEAD)\n\n      - name: Check updated version\n        run: jq .version package.json\n\n      - name: Run linter\n        run: yarn lint\n\n      - name: Pack\n        run: yarn pack\n\n      - uses: actions/upload-artifact@v4\n        with:\n          name: package\n          path: ./package.tgz\n\n  test-dist:\n    name: Test against dist\n    needs: [build]\n    runs-on: ubuntu-latest\n    strategy:\n      fail-fast: false\n      matrix:\n        node: ['22.x']\n    steps:\n      - name: Checkout repo\n        uses: actions/checkout@v4\n\n      - name: Use node ${{ matrix.node }}\n        uses: actions/setup-node@v4\n        with:\n          node-version: ${{ matrix.node }}\n          cache: 'yarn'\n\n      - name: Install deps\n        run: yarn install\n\n      - name: Download build artifact\n        uses: actions/download-artifact@v4\n        with:\n          name: package\n          path: .\n\n      - run: ls -lah\n\n      - name: Install build artifact\n        run: yarn add ./package.tgz\n\n      - name: Erase path aliases\n        run: sed -i -e /@remap-prod-remove-line/d ./tsconfig.base.json\n\n      - name: Run tests, against dist\n        env:\n          TEST_DIST: true\n        run: yarn test\n\n  test-types:\n    name: Test Types with TypeScript ${{ matrix.ts }}\n    needs: [build]\n    runs-on: ubuntu-latest\n\n    strategy:\n      fail-fast: false\n      matrix:\n        node: ['22.x']\n        ts: ['5.0', '5.1', '5.2', '5.3', '5.4', '5.5', '5.6', '5.7', '5.8']\n\n    steps:\n      - name: Checkout repo\n        uses: actions/checkout@v4\n\n      - name: Use node ${{ matrix.node }}\n        uses: actions/setup-node@v4\n        with:\n          node-version: ${{ matrix.node }}\n          cache: 'yarn'\n\n      - name: Download build artifact\n        uses: actions/download-artifact@v4\n        with:\n          name: package\n          path: .\n\n      - name: Install deps\n        run: yarn install\n\n      - name: Install TypeScript ${{ matrix.ts }}\n        run: yarn add typescript@${{ matrix.ts }}\n\n      - name: Install build artifact\n        run: yarn add ./package.tgz\n\n      - name: Erase path aliases\n        run: sed -i -e /@remap-prod-remove-line/d ./tsconfig.base.json\n\n      - name: Test types\n        env:\n          TEST_DIST: true\n        run: |\n          yarn tsc --version\n          yarn type-tests\n\n  test-published-artifact:\n    name: Test Published Artifact ${{ matrix.example }}\n\n    needs: [build]\n    runs-on: ubuntu-latest\n    strategy:\n      fail-fast: false\n      matrix:\n        node: ['22.x']\n        example:\n          [\n            'cra4',\n            'cra5',\n            'next',\n            'vite',\n            'node-standard',\n            'node-esm',\n            'react-native',\n            'expo',\n          ]\n    steps:\n      - name: Checkout repo\n        uses: actions/checkout@v4\n\n      - name: Use node ${{ matrix.node }}\n        uses: actions/setup-node@v4\n        with:\n          node-version: ${{ matrix.node }}\n          cache: 'yarn'\n\n      - name: Clone RTK repo\n        run: git clone https://github.com/reduxjs/redux-toolkit.git ./redux-toolkit\n\n      - name: Cache example deps\n        uses: actions/cache@v4\n        with:\n          path: ./redux-toolkit/examples/publish-ci/${{ matrix.example }}/node_modules\n          key: test-published-artifact-${{ matrix.example }}-node_modules\n\n      - name: Check folder contents\n        run: ls -l .\n\n      - name: Install deps\n        working-directory: ./redux-toolkit/examples/publish-ci/${{ matrix.example }}\n        env:\n          YARN_ENABLE_IMMUTABLE_INSTALLS: false\n        run: yarn install\n\n      - uses: actions/download-artifact@v4\n        with:\n          name: package\n          path: ./redux-toolkit/examples/publish-ci/${{ matrix.example }}\n\n      - name: Check folder contents\n        working-directory: ./redux-toolkit/examples/publish-ci/${{ matrix.example }}\n        run: ls -l .\n\n      - name: Install Redux-Thunk build artifact\n        working-directory: ./redux-toolkit/examples/publish-ci/${{ matrix.example }}\n        run: yarn add ./package.tgz\n\n      - name: Show installed package versions\n        working-directory: ./redux-toolkit/examples/publish-ci/${{ matrix.example }}\n        run: yarn info redux-thunk && yarn why redux-thunk\n\n      - name: Build example\n        working-directory: ./redux-toolkit/examples/publish-ci/${{ matrix.example }}\n        env:\n          NODE_OPTIONS: --openssl-legacy-provider\n        run: yarn build\n\n      - name: Run test step\n        working-directory: ./redux-toolkit/examples/publish-ci/${{ matrix.example }}\n        run: yarn test\n\n  are-the-types-wrong:\n    name: Check package config with are-the-types-wrong\n\n    needs: [build]\n    runs-on: ubuntu-latest\n    strategy:\n      fail-fast: false\n      matrix:\n        node: ['22.x']\n    steps:\n      - name: Checkout repo\n        uses: actions/checkout@v4\n\n      - name: Use node ${{ matrix.node }}\n        uses: actions/setup-node@v4\n        with:\n          node-version: ${{ matrix.node }}\n          cache: 'yarn'\n\n      - uses: actions/download-artifact@v4\n        with:\n          name: package\n          path: .\n\n      # Note: We currently expect \"FalseCJS\" failures for Node16 + `moduleResolution: \"node16\"\n      - name: Run are-the-types-wrong\n        run: npx @arethetypeswrong/cli ./package.tgz --format table --ignore-rules false-cjs\n",
+      "blame": [
+        {
+          "start": 1,
+          "end": 1,
+          "sha": "a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+          "evidence_ids": [
+            "commit:a7ff169ccfadc97c559aa29f3e15d56f5d270384"
+          ]
+        },
+        {
+          "start": 2,
+          "end": 2,
+          "sha": "70460b12fa449f926e4dc84b1f210b6b48886d52",
+          "evidence_ids": [
+            "commit:70460b12fa449f926e4dc84b1f210b6b48886d52"
+          ]
+        },
+        {
+          "start": 3,
+          "end": 3,
+          "sha": "bf04cf7523df80110cfe28b13bc7eb3f40bed86f",
+          "evidence_ids": [
+            "commit:bf04cf7523df80110cfe28b13bc7eb3f40bed86f"
+          ]
+        },
+        {
+          "start": 4,
+          "end": 4,
+          "sha": "70460b12fa449f926e4dc84b1f210b6b48886d52",
+          "evidence_ids": [
+            "commit:70460b12fa449f926e4dc84b1f210b6b48886d52"
+          ]
+        },
+        {
+          "start": 5,
+          "end": 6,
+          "sha": "aed9d12326c99b24c01c296bdf0567b6491e9ce0",
+          "evidence_ids": [
+            "commit:aed9d12326c99b24c01c296bdf0567b6491e9ce0"
+          ]
+        },
+        {
+          "start": 7,
+          "end": 7,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 8,
+          "end": 8,
+          "sha": "aed9d12326c99b24c01c296bdf0567b6491e9ce0",
+          "evidence_ids": [
+            "commit:aed9d12326c99b24c01c296bdf0567b6491e9ce0"
+          ]
+        },
+        {
+          "start": 9,
+          "end": 10,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 11,
+          "end": 11,
+          "sha": "cf2c0f09ecc1a7962b42adccc103f990c65b6c56",
+          "evidence_ids": [
+            "commit:cf2c0f09ecc1a7962b42adccc103f990c65b6c56"
+          ]
+        },
+        {
+          "start": 12,
+          "end": 13,
+          "sha": "aed9d12326c99b24c01c296bdf0567b6491e9ce0",
+          "evidence_ids": [
+            "commit:aed9d12326c99b24c01c296bdf0567b6491e9ce0"
+          ]
+        },
+        {
+          "start": 14,
+          "end": 14,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 15,
+          "end": 15,
+          "sha": "666d8cddca8365ffef91a937b18fafc55511adab",
+          "evidence_ids": [
+            "commit:666d8cddca8365ffef91a937b18fafc55511adab"
+          ]
+        },
+        {
+          "start": 16,
+          "end": 16,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 17,
+          "end": 17,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 18,
+          "end": 18,
+          "sha": "19430a4a80050c40cf545dce4522de3e01f342c7",
+          "evidence_ids": [
+            "commit:19430a4a80050c40cf545dce4522de3e01f342c7"
+          ]
+        },
+        {
+          "start": 19,
+          "end": 19,
+          "sha": "aed9d12326c99b24c01c296bdf0567b6491e9ce0",
+          "evidence_ids": [
+            "commit:aed9d12326c99b24c01c296bdf0567b6491e9ce0"
+          ]
+        },
+        {
+          "start": 20,
+          "end": 21,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 22,
+          "end": 22,
+          "sha": "aed9d12326c99b24c01c296bdf0567b6491e9ce0",
+          "evidence_ids": [
+            "commit:aed9d12326c99b24c01c296bdf0567b6491e9ce0"
+          ]
+        },
+        {
+          "start": 23,
+          "end": 23,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 24,
+          "end": 26,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 27,
+          "end": 27,
+          "sha": "a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+          "evidence_ids": [
+            "commit:a7ff169ccfadc97c559aa29f3e15d56f5d270384"
+          ]
+        },
+        {
+          "start": 28,
+          "end": 28,
+          "sha": "9161c48b6696bc479b684446a09b60ba286d9d9b",
+          "evidence_ids": [
+            "commit:9161c48b6696bc479b684446a09b60ba286d9d9b"
+          ]
+        },
+        {
+          "start": 29,
+          "end": 29,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 30,
+          "end": 31,
+          "sha": "a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+          "evidence_ids": [
+            "commit:a7ff169ccfadc97c559aa29f3e15d56f5d270384"
+          ]
+        },
+        {
+          "start": 32,
+          "end": 32,
+          "sha": "aed9d12326c99b24c01c296bdf0567b6491e9ce0",
+          "evidence_ids": [
+            "commit:aed9d12326c99b24c01c296bdf0567b6491e9ce0"
+          ]
+        },
+        {
+          "start": 33,
+          "end": 33,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 34,
+          "end": 34,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 35,
+          "end": 35,
+          "sha": "aed9d12326c99b24c01c296bdf0567b6491e9ce0",
+          "evidence_ids": [
+            "commit:aed9d12326c99b24c01c296bdf0567b6491e9ce0"
+          ]
+        },
+        {
+          "start": 36,
+          "end": 38,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 39,
+          "end": 39,
+          "sha": "19430a4a80050c40cf545dce4522de3e01f342c7",
+          "evidence_ids": [
+            "commit:19430a4a80050c40cf545dce4522de3e01f342c7"
+          ]
+        },
+        {
+          "start": 40,
+          "end": 41,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 42,
+          "end": 42,
+          "sha": "a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+          "evidence_ids": [
+            "commit:a7ff169ccfadc97c559aa29f3e15d56f5d270384"
+          ]
+        },
+        {
+          "start": 43,
+          "end": 43,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 44,
+          "end": 50,
+          "sha": "bf04cf7523df80110cfe28b13bc7eb3f40bed86f",
+          "evidence_ids": [
+            "commit:bf04cf7523df80110cfe28b13bc7eb3f40bed86f"
+          ]
+        },
+        {
+          "start": 51,
+          "end": 51,
+          "sha": "cf2c0f09ecc1a7962b42adccc103f990c65b6c56",
+          "evidence_ids": [
+            "commit:cf2c0f09ecc1a7962b42adccc103f990c65b6c56"
+          ]
+        },
+        {
+          "start": 52,
+          "end": 83,
+          "sha": "bf04cf7523df80110cfe28b13bc7eb3f40bed86f",
+          "evidence_ids": [
+            "commit:bf04cf7523df80110cfe28b13bc7eb3f40bed86f"
+          ]
+        },
+        {
+          "start": 84,
+          "end": 87,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 88,
+          "end": 88,
+          "sha": "70460b12fa449f926e4dc84b1f210b6b48886d52",
+          "evidence_ids": [
+            "commit:70460b12fa449f926e4dc84b1f210b6b48886d52"
+          ]
+        },
+        {
+          "start": 89,
+          "end": 91,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 92,
+          "end": 92,
+          "sha": "cf2c0f09ecc1a7962b42adccc103f990c65b6c56",
+          "evidence_ids": [
+            "commit:cf2c0f09ecc1a7962b42adccc103f990c65b6c56"
+          ]
+        },
+        {
+          "start": 93,
+          "end": 93,
+          "sha": "53b21ca5ac8becfcd9685b8667c30c570057ce22",
+          "evidence_ids": [
+            "commit:53b21ca5ac8becfcd9685b8667c30c570057ce22"
+          ]
+        },
+        {
+          "start": 94,
+          "end": 94,
+          "sha": "70460b12fa449f926e4dc84b1f210b6b48886d52",
+          "evidence_ids": [
+            "commit:70460b12fa449f926e4dc84b1f210b6b48886d52"
+          ]
+        },
+        {
+          "start": 95,
+          "end": 95,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 96,
+          "end": 96,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 97,
+          "end": 97,
+          "sha": "666d8cddca8365ffef91a937b18fafc55511adab",
+          "evidence_ids": [
+            "commit:666d8cddca8365ffef91a937b18fafc55511adab"
+          ]
+        },
+        {
+          "start": 98,
+          "end": 98,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 99,
+          "end": 99,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 100,
+          "end": 100,
+          "sha": "19430a4a80050c40cf545dce4522de3e01f342c7",
+          "evidence_ids": [
+            "commit:19430a4a80050c40cf545dce4522de3e01f342c7"
+          ]
+        },
+        {
+          "start": 101,
+          "end": 101,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 102,
+          "end": 103,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 104,
+          "end": 104,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 105,
+          "end": 110,
+          "sha": "bf04cf7523df80110cfe28b13bc7eb3f40bed86f",
+          "evidence_ids": [
+            "commit:bf04cf7523df80110cfe28b13bc7eb3f40bed86f"
+          ]
+        },
+        {
+          "start": 111,
+          "end": 111,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 112,
+          "end": 112,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 113,
+          "end": 114,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 115,
+          "end": 115,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 116,
+          "end": 116,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 117,
+          "end": 122,
+          "sha": "bf04cf7523df80110cfe28b13bc7eb3f40bed86f",
+          "evidence_ids": [
+            "commit:bf04cf7523df80110cfe28b13bc7eb3f40bed86f"
+          ]
+        },
+        {
+          "start": 123,
+          "end": 123,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 124,
+          "end": 125,
+          "sha": "bf04cf7523df80110cfe28b13bc7eb3f40bed86f",
+          "evidence_ids": [
+            "commit:bf04cf7523df80110cfe28b13bc7eb3f40bed86f"
+          ]
+        },
+        {
+          "start": 126,
+          "end": 126,
+          "sha": "debb864adb23db83539c21285548df18cae986ab",
+          "evidence_ids": [
+            "commit:debb864adb23db83539c21285548df18cae986ab"
+          ]
+        },
+        {
+          "start": 127,
+          "end": 127,
+          "sha": "23011c133dff216b228b94ddadeac73c8fd67cd2",
+          "evidence_ids": [
+            "commit:23011c133dff216b228b94ddadeac73c8fd67cd2"
+          ]
+        },
+        {
+          "start": 128,
+          "end": 128,
+          "sha": "bf04cf7523df80110cfe28b13bc7eb3f40bed86f",
+          "evidence_ids": [
+            "commit:bf04cf7523df80110cfe28b13bc7eb3f40bed86f"
+          ]
+        },
+        {
+          "start": 129,
+          "end": 137,
+          "sha": "a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+          "evidence_ids": [
+            "commit:a7ff169ccfadc97c559aa29f3e15d56f5d270384"
+          ]
+        },
+        {
+          "start": 138,
+          "end": 138,
+          "sha": "cf2c0f09ecc1a7962b42adccc103f990c65b6c56",
+          "evidence_ids": [
+            "commit:cf2c0f09ecc1a7962b42adccc103f990c65b6c56"
+          ]
+        },
+        {
+          "start": 139,
+          "end": 147,
+          "sha": "efd278b78b80fa6d27d912221bc27aa62f196237",
+          "evidence_ids": [
+            "commit:efd278b78b80fa6d27d912221bc27aa62f196237"
+          ]
+        },
+        {
+          "start": 148,
+          "end": 148,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 149,
+          "end": 149,
+          "sha": "efd278b78b80fa6d27d912221bc27aa62f196237",
+          "evidence_ids": [
+            "commit:efd278b78b80fa6d27d912221bc27aa62f196237"
+          ]
+        },
+        {
+          "start": 150,
+          "end": 151,
+          "sha": "a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+          "evidence_ids": [
+            "commit:a7ff169ccfadc97c559aa29f3e15d56f5d270384"
+          ]
+        },
+        {
+          "start": 152,
+          "end": 152,
+          "sha": "666d8cddca8365ffef91a937b18fafc55511adab",
+          "evidence_ids": [
+            "commit:666d8cddca8365ffef91a937b18fafc55511adab"
+          ]
+        },
+        {
+          "start": 153,
+          "end": 154,
+          "sha": "a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+          "evidence_ids": [
+            "commit:a7ff169ccfadc97c559aa29f3e15d56f5d270384"
+          ]
+        },
+        {
+          "start": 155,
+          "end": 155,
+          "sha": "19430a4a80050c40cf545dce4522de3e01f342c7",
+          "evidence_ids": [
+            "commit:19430a4a80050c40cf545dce4522de3e01f342c7"
+          ]
+        },
+        {
+          "start": 156,
+          "end": 162,
+          "sha": "a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+          "evidence_ids": [
+            "commit:a7ff169ccfadc97c559aa29f3e15d56f5d270384"
+          ]
+        },
+        {
+          "start": 163,
+          "end": 168,
+          "sha": "efd278b78b80fa6d27d912221bc27aa62f196237",
+          "evidence_ids": [
+            "commit:efd278b78b80fa6d27d912221bc27aa62f196237"
+          ]
+        },
+        {
+          "start": 169,
+          "end": 173,
+          "sha": "a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+          "evidence_ids": [
+            "commit:a7ff169ccfadc97c559aa29f3e15d56f5d270384"
+          ]
+        },
+        {
+          "start": 174,
+          "end": 175,
+          "sha": "5479dc2e6363b86525cd1f0a84b9667275154525",
+          "evidence_ids": [
+            "commit:5479dc2e6363b86525cd1f0a84b9667275154525"
+          ]
+        },
+        {
+          "start": 176,
+          "end": 177,
+          "sha": "a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+          "evidence_ids": [
+            "commit:a7ff169ccfadc97c559aa29f3e15d56f5d270384"
+          ]
+        },
+        {
+          "start": 178,
+          "end": 178,
+          "sha": "19430a4a80050c40cf545dce4522de3e01f342c7",
+          "evidence_ids": [
+            "commit:19430a4a80050c40cf545dce4522de3e01f342c7"
+          ]
+        },
+        {
+          "start": 179,
+          "end": 196,
+          "sha": "a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+          "evidence_ids": [
+            "commit:a7ff169ccfadc97c559aa29f3e15d56f5d270384"
+          ]
+        },
+        {
+          "start": 197,
+          "end": 198,
+          "sha": "8d21f04e796cb6cc73956ecbdddbecaa5273174d",
+          "evidence_ids": [
+            "commit:8d21f04e796cb6cc73956ecbdddbecaa5273174d"
+          ]
+        },
+        {
+          "start": 199,
+          "end": 203,
+          "sha": "a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+          "evidence_ids": [
+            "commit:a7ff169ccfadc97c559aa29f3e15d56f5d270384"
+          ]
+        },
+        {
+          "start": 204,
+          "end": 204,
+          "sha": "5d90dbad8043d0099a06b25daddafc7e214e8a4d",
+          "evidence_ids": [
+            "commit:5d90dbad8043d0099a06b25daddafc7e214e8a4d"
+          ]
+        },
+        {
+          "start": 205,
+          "end": 212,
+          "sha": "fcb5f6f2ff81fe7c9ef5a689c46e5ff46e10971a",
+          "evidence_ids": [
+            "commit:fcb5f6f2ff81fe7c9ef5a689c46e5ff46e10971a"
+          ]
+        },
+        {
+          "start": 213,
+          "end": 213,
+          "sha": "cf2c0f09ecc1a7962b42adccc103f990c65b6c56",
+          "evidence_ids": [
+            "commit:cf2c0f09ecc1a7962b42adccc103f990c65b6c56"
+          ]
+        },
+        {
+          "start": 214,
+          "end": 215,
+          "sha": "fcb5f6f2ff81fe7c9ef5a689c46e5ff46e10971a",
+          "evidence_ids": [
+            "commit:fcb5f6f2ff81fe7c9ef5a689c46e5ff46e10971a"
+          ]
+        },
+        {
+          "start": 216,
+          "end": 216,
+          "sha": "666d8cddca8365ffef91a937b18fafc55511adab",
+          "evidence_ids": [
+            "commit:666d8cddca8365ffef91a937b18fafc55511adab"
+          ]
+        },
+        {
+          "start": 217,
+          "end": 217,
+          "sha": "fcb5f6f2ff81fe7c9ef5a689c46e5ff46e10971a",
+          "evidence_ids": [
+            "commit:fcb5f6f2ff81fe7c9ef5a689c46e5ff46e10971a"
+          ]
+        },
+        {
+          "start": 218,
+          "end": 223,
+          "sha": "cf2c0f09ecc1a7962b42adccc103f990c65b6c56",
+          "evidence_ids": [
+            "commit:cf2c0f09ecc1a7962b42adccc103f990c65b6c56"
+          ]
+        },
+        {
+          "start": 224,
+          "end": 224,
+          "sha": "19430a4a80050c40cf545dce4522de3e01f342c7",
+          "evidence_ids": [
+            "commit:19430a4a80050c40cf545dce4522de3e01f342c7"
+          ]
+        },
+        {
+          "start": 225,
+          "end": 231,
+          "sha": "fcb5f6f2ff81fe7c9ef5a689c46e5ff46e10971a",
+          "evidence_ids": [
+            "commit:fcb5f6f2ff81fe7c9ef5a689c46e5ff46e10971a"
+          ]
+        }
+      ],
+      "narrative": {
+        "schema_version": "1.0.0",
+        "path": ".github/workflows/test.yml",
+        "source_ref": "reduxjs/redux-thunk@184205d49f707c6f203269e0d39ad85824801816",
+        "sampled_history": false,
+        "claims": [
+          {
+            "claim_id": "clm_none_1789830521425",
+            "text": "No recorded reason found",
+            "evidence_ids": [],
+            "confidence_tier": "NONE",
+            "stated_vs_inferred": "inferred"
+          }
+        ]
+      }
+    },
+    {
+      "path": "src/index.ts",
+      "hotspot_rank": 4,
+      "change_count": 12,
+      "sampled_history": false,
+      "content": "import type { Action, AnyAction } from 'redux'\nimport type { ThunkMiddleware } from './types'\n\nexport type {\n  ThunkAction,\n  ThunkActionDispatch,\n  ThunkDispatch,\n  ThunkMiddleware,\n} from './types'\n\n/** A function that accepts a potential \"extra argument\" value to be injected later,\n * and returns an instance of the thunk middleware that uses that value\n */\nfunction createThunkMiddleware<\n  State = any,\n  BasicAction extends Action = AnyAction,\n  ExtraThunkArg = undefined,\n>(extraArgument?: ExtraThunkArg) {\n  // Standard Redux middleware definition pattern:\n  // See: https://redux.js.org/tutorials/fundamentals/part-4-store#writing-custom-middleware\n  const middleware: ThunkMiddleware<State, BasicAction, ExtraThunkArg> =\n    ({ dispatch, getState }) =>\n    next =>\n    action => {\n      // The thunk middleware looks for any functions that were passed to `store.dispatch`.\n      // If this \"action\" is really a function, call it and return the result.\n      if (typeof action === 'function') {\n        // Inject the store's `dispatch` and `getState` methods, as well as any \"extra arg\"\n        return action(dispatch, getState, extraArgument)\n      }\n\n      // Otherwise, pass the action down the middleware chain as usual\n      return next(action)\n    }\n  return middleware\n}\n\nexport const thunk = createThunkMiddleware()\n\n// Export the factory function so users can create a customized version\n// with whatever \"extra arg\" they want to inject into their thunks\nexport const withExtraArgument = createThunkMiddleware\n",
+      "blame": [
+        {
+          "start": 1,
+          "end": 2,
+          "sha": "cfd28442b3f0aba06a428290097b816869312033",
+          "evidence_ids": [
+            "commit:cfd28442b3f0aba06a428290097b816869312033"
+          ]
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "sha": "77515bb5029de300cb09213e488e4b1ed389a3e5",
+          "evidence_ids": [
+            "commit:77515bb5029de300cb09213e488e4b1ed389a3e5"
+          ]
+        },
+        {
+          "start": 7,
+          "end": 7,
+          "sha": "bf04cf7523df80110cfe28b13bc7eb3f40bed86f",
+          "evidence_ids": [
+            "commit:bf04cf7523df80110cfe28b13bc7eb3f40bed86f"
+          ]
+        },
+        {
+          "start": 8,
+          "end": 8,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 9,
+          "end": 10,
+          "sha": "77515bb5029de300cb09213e488e4b1ed389a3e5",
+          "evidence_ids": [
+            "commit:77515bb5029de300cb09213e488e4b1ed389a3e5"
+          ]
+        },
+        {
+          "start": 11,
+          "end": 13,
+          "sha": "7fb5a2384013c907214b40588b5644c43e647a22",
+          "evidence_ids": [
+            "commit:7fb5a2384013c907214b40588b5644c43e647a22"
+          ]
+        },
+        {
+          "start": 14,
+          "end": 14,
+          "sha": "77515bb5029de300cb09213e488e4b1ed389a3e5",
+          "evidence_ids": [
+            "commit:77515bb5029de300cb09213e488e4b1ed389a3e5"
+          ]
+        },
+        {
+          "start": 15,
+          "end": 16,
+          "sha": "7fb5a2384013c907214b40588b5644c43e647a22",
+          "evidence_ids": [
+            "commit:7fb5a2384013c907214b40588b5644c43e647a22"
+          ]
+        },
+        {
+          "start": 17,
+          "end": 17,
+          "sha": "8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+          "evidence_ids": [
+            "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9"
+          ]
+        },
+        {
+          "start": 18,
+          "end": 21,
+          "sha": "7fb5a2384013c907214b40588b5644c43e647a22",
+          "evidence_ids": [
+            "commit:7fb5a2384013c907214b40588b5644c43e647a22"
+          ]
+        },
+        {
+          "start": 22,
+          "end": 24,
+          "sha": "cfd28442b3f0aba06a428290097b816869312033",
+          "evidence_ids": [
+            "commit:cfd28442b3f0aba06a428290097b816869312033"
+          ]
+        },
+        {
+          "start": 25,
+          "end": 26,
+          "sha": "7fb5a2384013c907214b40588b5644c43e647a22",
+          "evidence_ids": [
+            "commit:7fb5a2384013c907214b40588b5644c43e647a22"
+          ]
+        },
+        {
+          "start": 27,
+          "end": 27,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 28,
+          "end": 28,
+          "sha": "7fb5a2384013c907214b40588b5644c43e647a22",
+          "evidence_ids": [
+            "commit:7fb5a2384013c907214b40588b5644c43e647a22"
+          ]
+        },
+        {
+          "start": 29,
+          "end": 29,
+          "sha": "cfd28442b3f0aba06a428290097b816869312033",
+          "evidence_ids": [
+            "commit:cfd28442b3f0aba06a428290097b816869312033"
+          ]
+        },
+        {
+          "start": 30,
+          "end": 31,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 32,
+          "end": 32,
+          "sha": "7fb5a2384013c907214b40588b5644c43e647a22",
+          "evidence_ids": [
+            "commit:7fb5a2384013c907214b40588b5644c43e647a22"
+          ]
+        },
+        {
+          "start": 33,
+          "end": 34,
+          "sha": "cfd28442b3f0aba06a428290097b816869312033",
+          "evidence_ids": [
+            "commit:cfd28442b3f0aba06a428290097b816869312033"
+          ]
+        },
+        {
+          "start": 35,
+          "end": 35,
+          "sha": "77515bb5029de300cb09213e488e4b1ed389a3e5",
+          "evidence_ids": [
+            "commit:77515bb5029de300cb09213e488e4b1ed389a3e5"
+          ]
+        },
+        {
+          "start": 36,
+          "end": 37,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 38,
+          "end": 38,
+          "sha": "01e31c0fe9efe57ba4a2fd89d16f1ce5cca7661b",
+          "evidence_ids": [
+            "commit:01e31c0fe9efe57ba4a2fd89d16f1ce5cca7661b"
+          ]
+        },
+        {
+          "start": 39,
+          "end": 39,
+          "sha": "014936e5fee1a74071b663c614b366fe29c2868c",
+          "evidence_ids": [
+            "commit:014936e5fee1a74071b663c614b366fe29c2868c"
+          ]
+        },
+        {
+          "start": 40,
+          "end": 40,
+          "sha": "587a85b1d908e8b7cf2297bec6e15807d3b7dc62",
+          "evidence_ids": [
+            "commit:587a85b1d908e8b7cf2297bec6e15807d3b7dc62"
+          ]
+        },
+        {
+          "start": 41,
+          "end": 41,
+          "sha": "014936e5fee1a74071b663c614b366fe29c2868c",
+          "evidence_ids": [
+            "commit:014936e5fee1a74071b663c614b366fe29c2868c"
+          ]
+        },
+        {
+          "start": 42,
+          "end": 42,
+          "sha": "587a85b1d908e8b7cf2297bec6e15807d3b7dc62",
+          "evidence_ids": [
+            "commit:587a85b1d908e8b7cf2297bec6e15807d3b7dc62"
+          ]
+        }
+      ],
+      "narrative": {
+        "schema_version": "1.0.0",
+        "path": "src/index.ts",
+        "source_ref": "reduxjs/redux-thunk@184205d49f707c6f203269e0d39ad85824801816",
+        "sampled_history": false,
+        "claims": [
+          {
+            "claim_id": "clm_none_1789830521426",
+            "text": "No recorded reason found",
+            "evidence_ids": [],
+            "confidence_tier": "NONE",
+            "stated_vs_inferred": "inferred"
+          }
+        ]
+      }
+    },
+    {
+      "path": ".eslintrc",
+      "hotspot_rank": 5,
+      "change_count": 11,
+      "sampled_history": false,
+      "content": "{\n  \"extends\": [\"prettier\", \"plugin:@typescript-eslint/recommended\"],\n  \"env\": {\n    \"node\": true\n  },\n  \"parser\": \"@typescript-eslint/parser\",\n  \"parserOptions\": {\n    \"ecmaFeatures\": {\n      \"impliedStrict\": true\n    },\n    \"ecmaVersion\": 6,\n    \"sourceType\": \"module\"\n  },\n  \"plugins\": [\"@typescript-eslint\"],\n  \"rules\": {\n    \"padded-blocks\": \"off\",\n    \"no-use-before-define\": \"off\",\n    \"no-unused-expressions\": \"off\",\n    \"import/no-unresolved\": \"off\",\n    \"import/named\": \"off\",\n    \"@typescript-eslint/ban-ts-ignore\": \"off\",\n    \"@typescript-eslint/consistent-type-imports\": [\"error\"],\n    \"@typescript-eslint/explicit-function-return-type\": \"off\",\n    \"@typescript-eslint/no-explicit-any\": \"off\",\n    \"@typescript-eslint/member-delimiter-style\": \"off\",\n    \"@typescript-eslint/no-use-before-define\": [\"error\"],\n    \"@typescript-eslint/camelcase\": \"off\"\n  }\n}\n",
+      "blame": [
+        {
+          "start": 1,
+          "end": 1,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 2,
+          "end": 2,
+          "sha": "4b72fc3b27f29e5be0039398cc4ce2cf081ce9de",
+          "evidence_ids": [
+            "commit:4b72fc3b27f29e5be0039398cc4ce2cf081ce9de"
+          ]
+        },
+        {
+          "start": 3,
+          "end": 5,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 10,
+          "end": 10,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 11,
+          "end": 13,
+          "sha": "3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+          "evidence_ids": [
+            "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6"
+          ]
+        },
+        {
+          "start": 14,
+          "end": 14,
+          "sha": "2289e998de3670a0fdc2cc4bc40bc596539ebe69",
+          "evidence_ids": [
+            "commit:2289e998de3670a0fdc2cc4bc40bc596539ebe69"
+          ]
+        },
+        {
+          "start": 15,
+          "end": 15,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        },
+        {
+          "start": 16,
+          "end": 21,
+          "sha": "4b72fc3b27f29e5be0039398cc4ce2cf081ce9de",
+          "evidence_ids": [
+            "commit:4b72fc3b27f29e5be0039398cc4ce2cf081ce9de"
+          ]
+        },
+        {
+          "start": 22,
+          "end": 22,
+          "sha": "8f5234fb8c924936b9fe2d5ea72a83e5c248e0d8",
+          "evidence_ids": [
+            "commit:8f5234fb8c924936b9fe2d5ea72a83e5c248e0d8"
+          ]
+        },
+        {
+          "start": 23,
+          "end": 27,
+          "sha": "4b72fc3b27f29e5be0039398cc4ce2cf081ce9de",
+          "evidence_ids": [
+            "commit:4b72fc3b27f29e5be0039398cc4ce2cf081ce9de"
+          ]
+        },
+        {
+          "start": 28,
+          "end": 29,
+          "sha": "0000000000000000000000000000000000000000",
+          "evidence_ids": [
+            "commit:0000000000000000000000000000000000000000"
+          ]
+        }
+      ],
+      "narrative": {
+        "schema_version": "1.0.0",
+        "path": ".eslintrc",
+        "source_ref": "reduxjs/redux-thunk@184205d49f707c6f203269e0d39ad85824801816",
+        "sampled_history": false,
+        "claims": [
+          {
+            "claim_id": "clm_none_1789830521427",
+            "text": "No recorded reason found",
+            "evidence_ids": [],
+            "confidence_tier": "NONE",
+            "stated_vs_inferred": "inferred"
+          }
+        ]
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "commit:0000000000000000000000000000000000000000",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/0000000000000000000000000000000000000000",
+      "title": "Uncommitted working tree changes",
+      "body": "Uncommitted working tree changes in local clone.",
+      "author": "local",
+      "created_at": "2026-09-19T15:08:41.408Z"
+    },
+    {
+      "id": "commit:53b21ca5ac8becfcd9685b8667c30c570057ce22",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/53b21ca5ac8becfcd9685b8667c30c570057ce22",
+      "title": "chore: update TypeScript version to 5.8",
+      "body": "chore: update TypeScript version to 5.8",
+      "author": "Arya Emami",
+      "created_at": "2025-03-15T19:03:43-05:00"
+    },
+    {
+      "id": "commit:9161c48b6696bc479b684446a09b60ba286d9d9b",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/9161c48b6696bc479b684446a09b60ba286d9d9b",
+      "title": "Fix TS issues in `writeGitVersion` (#375)",
+      "body": "Fix TS issues in `writeGitVersion` (#375)",
+      "author": "Arya Emami",
+      "created_at": "2024-10-10T12:24:00-05:00"
+    },
+    {
+      "id": "commit:58c45ac5370c3b28d9dd746cc5fee627c61a712e",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/58c45ac5370c3b28d9dd746cc5fee627c61a712e",
+      "title": "Update to Yarn 4.4.1 (#374)",
+      "body": "Update to Yarn 4.4.1 (#374)",
+      "author": "Arya Emami",
+      "created_at": "2024-09-12T08:59:05-05:00"
+    },
+    {
+      "id": "commit:8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/8ab85c991e28cee56eeb4026c6d17b6be98962c9",
+      "title": "Format all files (#369)",
+      "body": "Format all files (#369)",
+      "author": "Arya Emami",
+      "created_at": "2024-08-17T13:01:54-05:00"
+    },
+    {
+      "id": "commit:38cbdf7baaec567833a76c073ad8b08cec6dfe7f",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/38cbdf7baaec567833a76c073ad8b08cec6dfe7f",
+      "title": "Bump TypeScript to 5.5 (#373)",
+      "body": "Bump TypeScript to 5.5 (#373)",
+      "author": "Arya Emami",
+      "created_at": "2024-08-16T08:52:23-05:00"
+    },
+    {
+      "id": "commit:bf04cf7523df80110cfe28b13bc7eb3f40bed86f",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/bf04cf7523df80110cfe28b13bc7eb3f40bed86f",
+      "title": "Migrate type tests to Vitest (#367)",
+      "body": "Migrate type tests to Vitest (#367)",
+      "author": "Arya Emami",
+      "created_at": "2024-07-12T17:57:22-05:00"
+    },
+    {
+      "id": "commit:9cdd958b1de470a478a77372abc0fc225bd92e9c",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/9cdd958b1de470a478a77372abc0fc225bd92e9c",
+      "title": "Update TypeScript to 5.4 (#368)",
+      "body": "Update TypeScript to 5.4 (#368)",
+      "author": "Arya Emami",
+      "created_at": "2024-03-09T21:53:48-06:00"
+    },
+    {
+      "id": "commit:138b8b72bbceead5f6ecd30a20539827e0f77a5c",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/138b8b72bbceead5f6ecd30a20539827e0f77a5c",
+      "title": "Upgrade to Yarn 4",
+      "body": "Upgrade to Yarn 4",
+      "author": "Arya Emami",
+      "created_at": "2024-02-21T16:39:42-06:00"
+    },
+    {
+      "id": "commit:88008ea0642596595773c8d84a6b32c62e54ac12",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/88008ea0642596595773c8d84a6b32c62e54ac12",
+      "title": "Release 3.1.0",
+      "body": "Release 3.1.0",
+      "author": "Mark Erikson",
+      "created_at": "2023-12-04T08:50:37-05:00"
+    },
+    {
+      "id": "commit:c8d4878f3da54bf8a5529c46c035d9a24c84c14f",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/c8d4878f3da54bf8a5529c46c035d9a24c84c14f",
+      "title": "Drop the extend-redux addition",
+      "body": "Drop the extend-redux addition",
+      "author": "Mark Erikson",
+      "created_at": "2023-12-04T08:43:44-05:00"
+    },
+    {
+      "id": "commit:3da59d0187af67350b019b8e4a2a38d43ea579c2",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/3da59d0187af67350b019b8e4a2a38d43ea579c2",
+      "title": "Release 3.0.1",
+      "body": "Release 3.0.1",
+      "author": "Mark Erikson",
+      "created_at": "2023-12-03T23:40:59-05:00"
+    },
+    {
+      "id": "commit:ece6c25b0047b456a36bc88a35f9a5591eab9b74",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/ece6c25b0047b456a36bc88a35f9a5591eab9b74",
+      "title": "Release 3.0.0",
+      "body": "Release 3.0.0",
+      "author": "Mark Erikson",
+      "created_at": "2023-12-03T23:19:30-05:00"
+    },
+    {
+      "id": "commit:b419ba6a3e6b57ec30c372c3ad9af73065ae833d",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/b419ba6a3e6b57ec30c372c3ad9af73065ae833d",
+      "title": "Bump Redux dep",
+      "body": "Bump Redux dep",
+      "author": "Mark Erikson",
+      "created_at": "2023-12-03T23:18:42-05:00"
+    },
+    {
+      "id": "commit:72db9a6ebc34c28d0e0e0f04305cab4f62e8267d",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/72db9a6ebc34c28d0e0e0f04305cab4f62e8267d",
+      "title": "Release 3.0.0-rc.0",
+      "body": "Release 3.0.0-rc.0",
+      "author": "Mark Erikson",
+      "created_at": "2023-11-15T23:22:46-05:00"
+    },
+    {
+      "id": "commit:aaac9c72ae1e079898fc8046da0c2d1bc5ab9d24",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/aaac9c72ae1e079898fc8046da0c2d1bc5ab9d24",
+      "title": "Lower tsup dep to keep .d.ts output",
+      "body": "Lower tsup dep to keep .d.ts output",
+      "author": "Mark Erikson",
+      "created_at": "2023-11-15T23:15:12-05:00"
+    },
+    {
+      "id": "commit:55f263511c3e9d051598e5e0e653e520ae07be6e",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/55f263511c3e9d051598e5e0e653e520ae07be6e",
+      "title": "Bump build tooling",
+      "body": "Bump build tooling",
+      "author": "Mark Erikson",
+      "created_at": "2023-11-15T23:04:46-05:00"
+    },
+    {
+      "id": "commit:c838aa360e948d680043df1d28314c902862963f",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/c838aa360e948d680043df1d28314c902862963f",
+      "title": "Bump Redux peer dep for RC",
+      "body": "Bump Redux peer dep for RC",
+      "author": "Mark Erikson",
+      "created_at": "2023-11-15T23:04:36-05:00"
+    },
+    {
+      "id": "commit:2d5854658f004b30c9e50674ae54aba00b879d62",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/2d5854658f004b30c9e50674ae54aba00b879d62",
+      "title": "Release 3.0.0-beta.0",
+      "body": "Release 3.0.0-beta.0",
+      "author": "Mark Erikson",
+      "created_at": "2023-08-26T17:24:11-04:00"
+    },
+    {
+      "id": "commit:2e3a39a4ce250448092d28af12958cf558fc35de",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/2e3a39a4ce250448092d28af12958cf558fc35de",
+      "title": "[package.json] add ^5.0.0-beta.0\" to peerDependencies",
+      "body": "[package.json] add ^5.0.0-beta.0\" to peerDependencies",
+      "author": "ryota-murakami",
+      "created_at": "2023-06-29T23:18:22+09:00"
+    },
+    {
+      "id": "commit:f41f21c0b587b8d25e78423c61757e7b58549e2b",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/f41f21c0b587b8d25e78423c61757e7b58549e2b",
+      "title": "Release 3.0.0-alpha.3",
+      "body": "Release 3.0.0-alpha.3",
+      "author": "Mark Erikson",
+      "created_at": "2023-04-02T23:20:34-04:00"
+    },
+    {
+      "id": "commit:c0d0294356fc5166ffc8831ed37fcbb8261cb3e6",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/c0d0294356fc5166ffc8831ed37fcbb8261cb3e6",
+      "title": "Output a separate \"legacy ESM\" artifact for Webpack 4",
+      "body": "Output a separate \"legacy ESM\" artifact for Webpack 4",
+      "author": "Mark Erikson",
+      "created_at": "2023-04-02T23:10:20-04:00"
+    },
+    {
+      "id": "commit:0209f095f0860de00b45622b97394de472d0ae76",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/0209f095f0860de00b45622b97394de472d0ae76",
+      "title": "Release 3.0.0-alpha.2",
+      "body": "Release 3.0.0-alpha.2",
+      "author": "Mark Erikson",
+      "created_at": "2023-04-02T20:46:40-04:00"
+    },
+    {
+      "id": "commit:dfabe7ee7d59169a4e0ccd271a376a12fa433911",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/dfabe7ee7d59169a4e0ccd271a376a12fa433911",
+      "title": "Change artifact names to be `redux-thunk`",
+      "body": "Change artifact names to be `redux-thunk`",
+      "author": "Mark Erikson",
+      "created_at": "2023-04-02T20:40:57-04:00"
+    },
+    {
+      "id": "commit:993a856ee168f84daf88c8928fb39e5d1da9133c",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/993a856ee168f84daf88c8928fb39e5d1da9133c",
+      "title": "Switch test setup to Vitest",
+      "body": "Switch test setup to Vitest",
+      "author": "Mark Erikson",
+      "created_at": "2023-04-02T13:43:54-04:00"
+    },
+    {
+      "id": "commit:b9fd5537c6187e1f6c66fdc2c50638ca992992fe",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/b9fd5537c6187e1f6c66fdc2c50638ca992992fe",
+      "title": "Add Vitest and remove Jest",
+      "body": "Add Vitest and remove Jest",
+      "author": "Mark Erikson",
+      "created_at": "2023-04-02T13:36:11-04:00"
+    },
+    {
+      "id": "commit:4806e1528dda77bad9647a81d07ac6fbd1c3fd3d",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/4806e1528dda77bad9647a81d07ac6fbd1c3fd3d",
+      "title": "Use tsup for build config and update package formatting for ESM",
+      "body": "Use tsup for build config and update package formatting for ESM",
+      "author": "Mark Erikson",
+      "created_at": "2023-04-02T13:34:37-04:00"
+    },
+    {
+      "id": "commit:fcfc702c4f760e2a85809174ad3b5e10eba09f9f",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/fcfc702c4f760e2a85809174ad3b5e10eba09f9f",
+      "title": "Add tsup and drop Rollup+Babel deps",
+      "body": "Add tsup and drop Rollup+Babel deps",
+      "author": "Mark Erikson",
+      "created_at": "2023-04-02T12:19:20-04:00"
+    },
+    {
+      "id": "commit:23011c133dff216b228b94ddadeac73c8fd67cd2",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/23011c133dff216b228b94ddadeac73c8fd67cd2",
+      "title": "Switch package manager to Yarn 3 and update CI jobs",
+      "body": "Switch package manager to Yarn 3 and update CI jobs",
+      "author": "Mark Erikson",
+      "created_at": "2023-03-25T15:18:25-04:00"
+    },
+    {
+      "id": "commit:309fac806ff4e3decada7df1c07cee4a3db54c91",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/309fac806ff4e3decada7df1c07cee4a3db54c91",
+      "title": "Different quotes for different folks",
+      "body": "Different quotes for different folks",
+      "author": "Tim Dorr",
+      "created_at": "2023-01-19T22:11:44-05:00"
+    },
+    {
+      "id": "commit:8ace4d8621bdee4b97cb9ea45f18a0997c8277df",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/8ace4d8621bdee4b97cb9ea45f18a0997c8277df",
+      "title": "Release 3.0.0-alpha.1",
+      "body": "Release 3.0.0-alpha.1",
+      "author": "Mark Erikson",
+      "created_at": "2023-01-17T21:13:26-05:00"
+    },
+    {
+      "id": "commit:b96589c1c24563eb976c6200128a9ea29ff7a3a9",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/b96589c1c24563eb976c6200128a9ea29ff7a3a9",
+      "title": "Release 3.0.0-alpha.0",
+      "body": "Release 3.0.0-alpha.0",
+      "author": "Mark Erikson",
+      "created_at": "2023-01-16T19:34:21-05:00"
+    },
+    {
+      "id": "commit:0ddba7627daab3b992ef8c7d45047b3de821045b",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/0ddba7627daab3b992ef8c7d45047b3de821045b",
+      "title": "Migrate thunk package to ESM",
+      "body": "Migrate thunk package to ESM",
+      "author": "Mark Erikson",
+      "created_at": "2023-01-16T19:31:35-05:00"
+    },
+    {
+      "id": "commit:73173475c696b03ef0b3f8052490b97d7b58f044",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/73173475c696b03ef0b3f8052490b97d7b58f044",
+      "title": "Wrap patterns passed to ESLint in single quotes (#339)",
+      "body": "Wrap patterns passed to ESLint in single quotes (#339)",
+      "author": "Michał Gołębiowski-Owczarek",
+      "created_at": "2023-01-03T19:53:47+01:00"
+    },
+    {
+      "id": "commit:ea2c5dd3ee4460eccd0837195cf8608f1efab912",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/ea2c5dd3ee4460eccd0837195cf8608f1efab912",
+      "title": "Release 2.4.2",
+      "body": "Release 2.4.2",
+      "author": "Mark Erikson",
+      "created_at": "2022-11-03T21:56:43-04:00"
+    },
+    {
+      "id": "commit:876c893f4ac8fe0d93568dba5001360d7405cb16",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/876c893f4ac8fe0d93568dba5001360d7405cb16",
+      "title": "2.4.1",
+      "body": "2.4.1",
+      "author": "Mark Erikson",
+      "created_at": "2021-11-26T15:18:10-05:00"
+    },
+    {
+      "id": "commit:ce76464960d5f1236460352fd3f2454e930f3665",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/ce76464960d5f1236460352fd3f2454e930f3665",
+      "title": "2.4.0",
+      "body": "2.4.0",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-25T20:58:43-04:00"
+    },
+    {
+      "id": "commit:2289e998de3670a0fdc2cc4bc40bc596539ebe69",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/2289e998de3670a0fdc2cc4bc40bc596539ebe69",
+      "title": "Remove some unused packaages",
+      "body": "Remove some unused packaages",
+      "author": "Tim Dorr",
+      "created_at": "2021-10-25T09:31:38-04:00"
+    },
+    {
+      "id": "commit:6bca90cd5684754c09030cf0d08e284cb8ee5743",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/6bca90cd5684754c09030cf0d08e284cb8ee5743",
+      "title": "Lint the type tests",
+      "body": "Lint the type tests",
+      "author": "Tim Dorr",
+      "created_at": "2021-10-25T09:21:39-04:00"
+    },
+    {
+      "id": "commit:106f90f85e094d5c0e1552c20579a34993672801",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/106f90f85e094d5c0e1552c20579a34993672801",
+      "title": "Format check the type tests as well",
+      "body": "Format check the type tests as well",
+      "author": "Tim Dorr",
+      "created_at": "2021-10-25T08:51:57-04:00"
+    },
+    {
+      "id": "commit:b56b83d85bfbfd29701cd9c7bc4d3ffc14797403",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/b56b83d85bfbfd29701cd9c7bc4d3ffc14797403",
+      "title": "Add a format checking script",
+      "body": "Add a format checking script",
+      "author": "Tim Dorr",
+      "created_at": "2021-10-25T08:35:14-04:00"
+    },
+    {
+      "id": "commit:4bbf93bf6803839a34ad8192e7419c669990a90a",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/4bbf93bf6803839a34ad8192e7419c669990a90a",
+      "title": "Update outdated tools",
+      "body": "Update outdated tools",
+      "author": "Tim Dorr",
+      "created_at": "2021-10-25T08:26:30-04:00"
+    },
+    {
+      "id": "commit:cfd28442b3f0aba06a428290097b816869312033",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/cfd28442b3f0aba06a428290097b816869312033",
+      "title": "Fix up linting and formatting",
+      "body": "Fix up linting and formatting",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-24T00:34:53-04:00"
+    },
+    {
+      "id": "commit:f1540ca935847fbfa67e844a04b837210b323df0",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/f1540ca935847fbfa67e844a04b837210b323df0",
+      "title": "Rework typetest setup to pass by itself",
+      "body": "Rework typetest setup to pass by itself",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-24T00:20:14-04:00"
+    },
+    {
+      "id": "commit:0f02b4884d72c41d33c6237e2453d5470e0f9d4a",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/0f02b4884d72c41d33c6237e2453d5470e0f9d4a",
+      "title": "Add types/jest",
+      "body": "Add types/jest",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-24T00:05:13-04:00"
+    },
+    {
+      "id": "commit:77515bb5029de300cb09213e488e4b1ed389a3e5",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/77515bb5029de300cb09213e488e4b1ed389a3e5",
+      "title": "Update build setup to compile source as TS",
+      "body": "Update build setup to compile source as TS",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-24T00:03:22-04:00"
+    },
+    {
+      "id": "commit:6477596cb7d6f165d8dc533dcbd37b7718f8e0d6",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/6477596cb7d6f165d8dc533dcbd37b7718f8e0d6",
+      "title": "Copy TS + Rollup build config from Reselect",
+      "body": "Copy TS + Rollup build config from Reselect",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-23T23:30:18-04:00"
+    },
+    {
+      "id": "commit:fd574c212abe47c3db22b865535e72fd93114acb",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/fd574c212abe47c3db22b865535e72fd93114acb",
+      "title": "Replace Webpack + deps with Rollup + deps",
+      "body": "Replace Webpack + deps with Rollup + deps",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-23T23:07:46-04:00"
+    },
+    {
+      "id": "commit:4faeb1695616e4e1a2c092d05ed4d6096bc24b7f",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/4faeb1695616e4e1a2c092d05ed4d6096bc24b7f",
+      "title": "Remove commit hooks",
+      "body": "Remove commit hooks",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-23T23:07:38-04:00"
+    },
+    {
+      "id": "commit:b79769c84846e83d03f6d2b879e4f02317218ce7",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/b79769c84846e83d03f6d2b879e4f02317218ce7",
+      "title": "Move Redux module type extension into a separate imported file (#321)",
+      "body": "Move Redux module type extension into a separate imported file (#321)",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-23T17:23:05-04:00"
+    },
+    {
+      "id": "commit:debb864adb23db83539c21285548df18cae986ab",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/debb864adb23db83539c21285548df18cae986ab",
+      "title": "Update TS dev tooling and GH Actions workflow (#320)",
+      "body": "Update TS dev tooling and GH Actions workflow (#320)",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-23T15:35:29-04:00"
+    },
+    {
+      "id": "commit:2fbc5351b9c554afa2b7ba4cde4ef314bc54047c",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/2fbc5351b9c554afa2b7ba4cde4ef314bc54047c",
+      "title": "Remove reference to UMD build",
+      "body": "Remove reference to UMD build",
+      "author": "Tom Spencer",
+      "created_at": "2023-12-05T10:33:36Z"
+    },
+    {
+      "id": "commit:b721292b350302c9480b4d7ec0b0b79ad7055cdc",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/b721292b350302c9480b4d7ec0b0b79ad7055cdc",
+      "title": "Update README to use named `thunk` export",
+      "body": "Update README to use named `thunk` export",
+      "author": "Tom Spencer",
+      "created_at": "2023-12-04T23:19:38Z"
+    },
+    {
+      "id": "commit:3eea8af58dfaede8139564fad61570df4cbb604d",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/3eea8af58dfaede8139564fad61570df4cbb604d",
+      "title": "fix GitHub workflow badge URL (#353)",
+      "body": "fix GitHub workflow badge URL (#353)",
+      "author": "shoito",
+      "created_at": "2023-10-21T14:51:12+09:00"
+    },
+    {
+      "id": "commit:01e31c0fe9efe57ba4a2fd89d16f1ce5cca7661b",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/01e31c0fe9efe57ba4a2fd89d16f1ce5cca7661b",
+      "title": "update README and types to match named export (#347)",
+      "body": "update README and types to match named export (#347)",
+      "author": "Ben Durrant",
+      "created_at": "2023-04-21T20:56:59+01:00"
+    },
+    {
+      "id": "commit:ac9beb25690f1596462c3b256521d558fc5b36e7",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/ac9beb25690f1596462c3b256521d558fc5b36e7",
+      "title": "Fixed typo in README.md",
+      "body": "Fixed typo in README.md",
+      "author": "Aleksandr_Novikov2",
+      "created_at": "2022-03-24T00:14:53+03:00"
+    },
+    {
+      "id": "commit:ba38cc9c972c01c4596216bbf526c836c7e9af46",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/ba38cc9c972c01c4596216bbf526c836c7e9af46",
+      "title": "README cleanup",
+      "body": "README cleanup",
+      "author": "Mark Erikson",
+      "created_at": "2021-11-26T15:09:54-05:00"
+    },
+    {
+      "id": "commit:d40a51f331cea2ec014919313080303ca7a1fbe3",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/d40a51f331cea2ec014919313080303ca7a1fbe3",
+      "title": "Update README",
+      "body": "Update README",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-25T20:56:17-04:00"
+    },
+    {
+      "id": "commit:aed9d12326c99b24c01c296bdf0567b6491e9ce0",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/aed9d12326c99b24c01c296bdf0567b6491e9ce0",
+      "title": "Use GitHub Actions (#318)",
+      "body": "Use GitHub Actions (#318)",
+      "author": "Nick McCurdy",
+      "created_at": "2021-09-17T11:38:19-04:00"
+    },
+    {
+      "id": "commit:290acf90fa5afac5b49f286bb3d8fc51aa864ed3",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/290acf90fa5afac5b49f286bb3d8fc51aa864ed3",
+      "title": "Use \"sh\" instead of \"js\" in install instructions (#312)",
+      "body": "Use \"sh\" instead of \"js\" in install instructions (#312)",
+      "author": "Evan Hahn",
+      "created_at": "2021-02-15T11:45:24-06:00"
+    },
+    {
+      "id": "commit:b04e04ca9e4f9671ab5bd7f579a5de9f3ebf3c32",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/b04e04ca9e4f9671ab5bd7f579a5de9f3ebf3c32",
+      "title": "chore: add yarn add line (#305)",
+      "body": "chore: add yarn add line (#305)",
+      "author": "Richard Oliver Bray",
+      "created_at": "2020-11-27T03:50:01Z"
+    },
+    {
+      "id": "commit:80296ec9ef49410e2eb29b3531ceac094d5e03bd",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/80296ec9ef49410e2eb29b3531ceac094d5e03bd",
+      "title": "Improved wording in README.md (#293)",
+      "body": "Improved wording in README.md (#293)",
+      "author": "Haricharan Bole",
+      "created_at": "2020-08-05T23:52:33+05:30"
+    },
+    {
+      "id": "commit:6cec3962d80853b48525a3eb99299c1cb7e4b10d",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/6cec3962d80853b48525a3eb99299c1cb7e4b10d",
+      "title": "docs: fix link for `applyMiddleware` (#279)",
+      "body": "docs: fix link for `applyMiddleware` (#279)",
+      "author": "Andrew Luca",
+      "created_at": "2020-02-10T23:30:19+02:00"
+    },
+    {
+      "id": "commit:9ce44a808c827367eba48e06a1fb5edde616e64b",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/9ce44a808c827367eba48e06a1fb5edde616e64b",
+      "title": "Fix link (#276)",
+      "body": "Fix link (#276)",
+      "author": "Michael Hienle",
+      "created_at": "2019-12-31T18:15:18+01:00"
+    },
+    {
+      "id": "commit:c1b4536284578660ea4771e621c9f24787e237c1",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/c1b4536284578660ea4771e621c9f24787e237c1",
+      "title": "Correct destructuring example (#272)",
+      "body": "Correct destructuring example (#272)",
+      "author": "Graham",
+      "created_at": "2019-12-11T19:07:45-05:00"
+    },
+    {
+      "id": "commit:c6a7015f76bcd461831564e543997896229dcff2",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/c6a7015f76bcd461831564e543997896229dcff2",
+      "title": "Reflect rename of Redux Starter Kit (#270)",
+      "body": "Reflect rename of Redux Starter Kit (#270)",
+      "author": "Travis DePrato",
+      "created_at": "2019-11-18T14:28:32-05:00"
+    },
+    {
+      "id": "commit:3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/3f56c2fba4a72d034cf214a2450df4d91ac1f5d6",
+      "title": "Add Prettier (#262)",
+      "body": "Add Prettier (#262)",
+      "author": "Jed Mao",
+      "created_at": "2019-08-29T12:58:54-05:00"
+    },
+    {
+      "id": "commit:9eb31ec01f4cf9aee95d76738c88f69b9b8e0b13",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/9eb31ec01f4cf9aee95d76738c88f69b9b8e0b13",
+      "title": "Update README.md",
+      "body": "Update README.md",
+      "author": "Mark Erikson",
+      "created_at": "2019-03-14T21:56:59-04:00"
+    },
+    {
+      "id": "commit:bacc013b2dba16f412accbd769f434b366ebdf93",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/bacc013b2dba16f412accbd769f434b366ebdf93",
+      "title": "Clarify terminology (#237)",
+      "body": "Clarify terminology (#237)",
+      "author": "Jesse McCarthy",
+      "created_at": "2019-03-12T21:14:52-04:00"
+    },
+    {
+      "id": "commit:d5b6921037ea4ac414e8b6ba3398e4cd6287784c",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/d5b6921037ea4ac414e8b6ba3398e4cd6287784c",
+      "title": "promote gender neutral docs (#234)",
+      "body": "promote gender neutral docs (#234)",
+      "author": "Andrei Rusu",
+      "created_at": "2019-02-03T22:43:37+01:00"
+    },
+    {
+      "id": "commit:614245356399f3a07d17431928f612e1d2d0037c",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/614245356399f3a07d17431928f612e1d2d0037c",
+      "title": "Add FAQ link",
+      "body": "Add FAQ link",
+      "author": "Mark Erikson",
+      "created_at": "2018-12-09T14:44:40-05:00"
+    },
+    {
+      "id": "commit:b3041316dc15b1e5489388ef75465140adc323bc",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/b3041316dc15b1e5489388ef75465140adc323bc",
+      "title": "Update \"why do I need this\" section",
+      "body": "Update \"why do I need this\" section",
+      "author": "Mark Erikson",
+      "created_at": "2018-12-09T14:43:17-05:00"
+    },
+    {
+      "id": "commit:dc5fc226c6015f426f16f5f6f9d23c80d14a06c8",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/dc5fc226c6015f426f16f5f6f9d23c80d14a06c8",
+      "title": "--save no longer needed (#217)",
+      "body": "--save no longer needed (#217)",
+      "author": "Joe Cortopassi",
+      "created_at": "2018-10-01T12:47:55-05:00"
+    },
+    {
+      "id": "commit:82142b8f974fd988761bc7261a6a39cdf1c4bcb5",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/82142b8f974fd988761bc7261a6a39cdf1c4bcb5",
+      "title": "Clean up infrastructure a bit.",
+      "body": "Clean up infrastructure a bit.",
+      "author": "Tim Dorr",
+      "created_at": "2018-05-28T14:41:38-04:00"
+    },
+    {
+      "id": "commit:5b2fb41dc330bc55af0275d3a8844ecb3dea4edf",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/5b2fb41dc330bc55af0275d3a8844ecb3dea4edf",
+      "title": "Merge pull request #180 from Cryrivers/master",
+      "body": "Merge pull request #180 from Cryrivers/master",
+      "author": "Tim Dorr",
+      "created_at": "2018-05-24T19:57:29-04:00"
+    },
+    {
+      "id": "commit:67ebdc97a928fb36886ebcf42c15919d272e3f1a",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/67ebdc97a928fb36886ebcf42c15919d272e3f1a",
+      "title": "Added 'module' entry for module file",
+      "body": "Added 'module' entry for module file",
+      "author": "Wildhoney",
+      "created_at": "2018-05-21T19:43:27+01:00"
+    },
+    {
+      "id": "commit:be1265dd4c91e7e0b18330332c2d6c908fb68220",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/be1265dd4c91e7e0b18330332c2d6c908fb68220",
+      "title": "Replace deprecated lifecycle method in README",
+      "body": "Replace deprecated lifecycle method in README",
+      "author": "Mohamed Shaaban",
+      "created_at": "2018-05-09T12:35:19+02:00"
+    },
+    {
+      "id": "commit:68917a161bdb0dab99d9793edb7c56e9055ad032",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/68917a161bdb0dab99d9793edb7c56e9055ad032",
+      "title": "Fix broken links to Redux website",
+      "body": "Fix broken links to Redux website",
+      "author": "Andrey Stolbovsky",
+      "created_at": "2018-03-12T20:54:47+03:00"
+    },
+    {
+      "id": "commit:6de3271d3e5b9662eb7d5739bc4cf22d0e330223",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/6de3271d3e5b9662eb7d5739bc4cf22d0e330223",
+      "title": "Add derivation of thunk",
+      "body": "Add derivation of thunk",
+      "author": "dc",
+      "created_at": "2017-08-17T21:59:37-07:00"
+    },
+    {
+      "id": "commit:37884bc9d63ebe5e0db3e2eefdf675d27e9bac80",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/37884bc9d63ebe5e0db3e2eefdf675d27e9bac80",
+      "title": "Replace npmcdn.com with unpkg.com",
+      "body": "Replace npmcdn.com with unpkg.com",
+      "author": "npmcdn-to-unpkg-bot",
+      "created_at": "2016-09-01T23:29:21+01:00"
+    },
+    {
+      "id": "commit:54daa0b96e3a2586e4de2519694709bdb3229f02",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/54daa0b96e3a2586e4de2519694709bdb3229f02",
+      "title": "remove repeated word \"here\"",
+      "body": "remove repeated word \"here\"",
+      "author": "Mostafa Gaafar",
+      "created_at": "2016-06-22T14:41:54+04:00"
+    },
+    {
+      "id": "commit:b0ec79cabeb498e389a3d41a723031fc4047b236",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/b0ec79cabeb498e389a3d41a723031fc4047b236",
+      "title": "Add TypeScript definitions",
+      "body": "Add TypeScript definitions",
+      "author": "Daniel Lytkin",
+      "created_at": "2016-06-09T16:29:52+06:00"
+    },
+    {
+      "id": "commit:90952941758591f98d655a47acdc069a0b5baa2d",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/90952941758591f98d655a47acdc069a0b5baa2d",
+      "title": "Update README.md",
+      "body": "Update README.md",
+      "author": "Dan Abramov",
+      "created_at": "2016-05-10T18:23:43+01:00"
+    },
+    {
+      "id": "commit:500be8189912399233d69384e395c9704907b8ca",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/500be8189912399233d69384e395c9704907b8ca",
+      "title": "Update README.md",
+      "body": "Update README.md",
+      "author": "Dan Abramov",
+      "created_at": "2016-05-10T18:23:28+01:00"
+    },
+    {
+      "id": "commit:cf2c0f09ecc1a7962b42adccc103f990c65b6c56",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/cf2c0f09ecc1a7962b42adccc103f990c65b6c56",
+      "title": "chore: update CI Node.js version to 22",
+      "body": "chore: update CI Node.js version to 22",
+      "author": "Arya Emami",
+      "created_at": "2025-03-15T17:31:05-05:00"
+    },
+    {
+      "id": "commit:efd278b78b80fa6d27d912221bc27aa62f196237",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/efd278b78b80fa6d27d912221bc27aa62f196237",
+      "title": "Add Expo and React Native examples to CI (#365)",
+      "body": "Add Expo and React Native examples to CI (#365)",
+      "author": "Arya Emami",
+      "created_at": "2024-03-11T13:38:17-05:00"
+    },
+    {
+      "id": "commit:19430a4a80050c40cf545dce4522de3e01f342c7",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/19430a4a80050c40cf545dce4522de3e01f342c7",
+      "title": "Upgrade other actions in CI",
+      "body": "Upgrade other actions in CI",
+      "author": "Arya Emami",
+      "created_at": "2024-02-21T22:38:58-06:00"
+    },
+    {
+      "id": "commit:8d21f04e796cb6cc73956ecbdddbecaa5273174d",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/8d21f04e796cb6cc73956ecbdddbecaa5273174d",
+      "title": "Add `NODE_OPTIONS: --openssl-legacy-provider` to CI",
+      "body": "Add `NODE_OPTIONS: --openssl-legacy-provider` to CI",
+      "author": "Arya Emami",
+      "created_at": "2024-02-21T19:08:06-06:00"
+    },
+    {
+      "id": "commit:5479dc2e6363b86525cd1f0a84b9667275154525",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/5479dc2e6363b86525cd1f0a84b9667275154525",
+      "title": "Add `YARN_ENABLE_IMMUTABLE_INSTALLS: false` to CI",
+      "body": "Add `YARN_ENABLE_IMMUTABLE_INSTALLS: false` to CI",
+      "author": "Arya Emami",
+      "created_at": "2024-02-21T16:57:21-06:00"
+    },
+    {
+      "id": "commit:666d8cddca8365ffef91a937b18fafc55511adab",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/666d8cddca8365ffef91a937b18fafc55511adab",
+      "title": "Update `actions/checkout` usages to v4",
+      "body": "Update `actions/checkout` usages to v4",
+      "author": "Arya Emami",
+      "created_at": "2024-02-21T16:40:40-06:00"
+    },
+    {
+      "id": "commit:88636824764104a0eb290ccd984346cc135196cb",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/88636824764104a0eb290ccd984346cc135196cb",
+      "title": "Remove old attw matrix entry",
+      "body": "Remove old attw matrix entry",
+      "author": "Mark Erikson",
+      "created_at": "2023-11-15T23:15:25-05:00"
+    },
+    {
+      "id": "commit:fcb5f6f2ff81fe7c9ef5a689c46e5ff46e10971a",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/fcb5f6f2ff81fe7c9ef5a689c46e5ff46e10971a",
+      "title": "Use real `attw`, and bump TS test matrix",
+      "body": "Use real `attw`, and bump TS test matrix",
+      "author": "Mark Erikson",
+      "created_at": "2023-11-15T23:08:30-05:00"
+    },
+    {
+      "id": "commit:5d90dbad8043d0099a06b25daddafc7e214e8a4d",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/5d90dbad8043d0099a06b25daddafc7e214e8a4d",
+      "title": "Ignore `FalseCJS` errors in the `arethetypeswrong` job",
+      "body": "Ignore `FalseCJS` errors in the `arethetypeswrong` job",
+      "author": "Mark Erikson",
+      "created_at": "2023-04-02T13:50:07-04:00"
+    },
+    {
+      "id": "commit:a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/a7ff169ccfadc97c559aa29f3e15d56f5d270384",
+      "title": "Run RTK publish CI examples on built artifact",
+      "body": "Run RTK publish CI examples on built artifact",
+      "author": "Mark Erikson",
+      "created_at": "2023-03-25T16:02:06-04:00"
+    },
+    {
+      "id": "commit:a1e9c324c36ec1988f82b32d065489d725517e09",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/a1e9c324c36ec1988f82b32d065489d725517e09",
+      "title": "Update TS test matrix",
+      "body": "Update TS test matrix",
+      "author": "Mark Erikson",
+      "created_at": "2023-01-20T21:26:51-05:00"
+    },
+    {
+      "id": "commit:931b5bb25389c94818709cb33773494ceb24a9cd",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/931b5bb25389c94818709cb33773494ceb24a9cd",
+      "title": "Add TS 4.5 to the matrix",
+      "body": "Add TS 4.5 to the matrix",
+      "author": "Mark Erikson",
+      "created_at": "2021-11-26T15:14:42-05:00"
+    },
+    {
+      "id": "commit:70460b12fa449f926e4dc84b1f210b6b48886d52",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/70460b12fa449f926e4dc84b1f210b6b48886d52",
+      "title": "Clean up the Actions workflow",
+      "body": "Clean up the Actions workflow",
+      "author": "Tim Dorr",
+      "created_at": "2021-10-25T08:26:54-04:00"
+    },
+    {
+      "id": "commit:587a85b1d908e8b7cf2297bec6e15807d3b7dc62",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/587a85b1d908e8b7cf2297bec6e15807d3b7dc62",
+      "title": "Export thunk and withExtraArgument as named values and remove defaults",
+      "body": "Export thunk and withExtraArgument as named values and remove defaults",
+      "author": "Mark Erikson",
+      "created_at": "2023-01-16T20:46:23-05:00"
+    },
+    {
+      "id": "commit:35595ad136513596289729ae3758ad2566d2c27d",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/35595ad136513596289729ae3758ad2566d2c27d",
+      "title": "This already defaults to any",
+      "body": "This already defaults to any",
+      "author": "Tim Dorr",
+      "created_at": "2021-10-25T12:13:18-04:00"
+    },
+    {
+      "id": "commit:014936e5fee1a74071b663c614b366fe29c2868c",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/014936e5fee1a74071b663c614b366fe29c2868c",
+      "title": "Move up the type assertion",
+      "body": "Move up the type assertion",
+      "author": "Tim Dorr",
+      "created_at": "2021-10-25T09:57:44-04:00"
+    },
+    {
+      "id": "commit:7fb5a2384013c907214b40588b5644c43e647a22",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/7fb5a2384013c907214b40588b5644c43e647a22",
+      "title": "Remove Webpack config and try test build (#324)",
+      "body": "Remove Webpack config and try test build (#324)",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-25T09:42:39-04:00"
+    },
+    {
+      "id": "commit:78e03e4664c468c9547de541fbbcb9ad98354805",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/78e03e4664c468c9547de541fbbcb9ad98354805",
+      "title": "Give up on this override attempt",
+      "body": "Give up on this override attempt",
+      "author": "Tim Dorr",
+      "created_at": "2021-10-25T09:21:56-04:00"
+    },
+    {
+      "id": "commit:4b72fc3b27f29e5be0039398cc4ce2cf081ce9de",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/4b72fc3b27f29e5be0039398cc4ce2cf081ce9de",
+      "title": "Fix latest linting errors",
+      "body": "Fix latest linting errors",
+      "author": "Tim Dorr",
+      "created_at": "2021-10-25T08:35:26-04:00"
+    },
+    {
+      "id": "commit:5a8cc9eebf5ef8dfb8d47b972a8c8ff9b9a10d6c",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/5a8cc9eebf5ef8dfb8d47b972a8c8ff9b9a10d6c",
+      "title": "Rename index.js to TS",
+      "body": "Rename index.js to TS",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-23T23:30:39-04:00"
+    },
+    {
+      "id": "commit:56b90d7040666956fa3f3eee761b89a51d69598e",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/56b90d7040666956fa3f3eee761b89a51d69598e",
+      "title": "Upgrade dependencies (#261)",
+      "body": "Upgrade dependencies (#261)",
+      "author": "Jed Mao",
+      "created_at": "2019-08-29T08:53:25-05:00"
+    },
+    {
+      "id": "commit:8f5234fb8c924936b9fe2d5ea72a83e5c248e0d8",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/8f5234fb8c924936b9fe2d5ea72a83e5c248e0d8",
+      "title": "Enforce type imports where applicable (#338)",
+      "body": "Enforce type imports where applicable (#338)",
+      "author": "Michał Gołębiowski-Owczarek",
+      "created_at": "2023-01-02T21:07:25+01:00"
+    },
+    {
+      "id": "commit:c477613f05cea8abc35c6ee3e9750f915e73ec74",
+      "type": "commit",
+      "url": "https://github.com/reduxjs/redux-thunk/commit/c477613f05cea8abc35c6ee3e9750f915e73ec74",
+      "title": "Remove annoying lint rules",
+      "body": "Remove annoying lint rules",
+      "author": "Mark Erikson",
+      "created_at": "2021-10-24T00:24:52-04:00"
+    },
+    {
+      "id": "pr:375",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/375",
+      "title": "Fix TS issues in `writeGitVersion`",
+      "body": "## **This PR**:\r\n\r\n- [X] Fixes TS issues in `writeGitVersion`.\r\n",
+      "author": "aryaemami59",
+      "created_at": "2024-10-10T17:24:00Z"
+    },
+    {
+      "id": "pr:374",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/374",
+      "title": "Update to Yarn 4.4.1",
+      "body": "## **This PR**:\r\n\r\n- [X] Upgrades Yarn to version 4.4.1.",
+      "author": "aryaemami59",
+      "created_at": "2024-09-12T13:59:06Z"
+    },
+    {
+      "id": "pr:369",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/369",
+      "title": "Format all files",
+      "body": "## This PR:\r\n\r\n  - [X] Bumps Prettier to latest version.\r\n  - [X] Formats all files.",
+      "author": "aryaemami59",
+      "created_at": "2024-08-17T18:01:54Z"
+    },
+    {
+      "id": "pr:373",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/373",
+      "title": "Bump TypeScript to 5.5",
+      "body": "## **This PR**:\r\n\r\n- [X] Bumps TypeScript to version 5.5.\r\n- [X] Adds TypeScript 5.5 to TS versions to test against during CI.",
+      "author": "aryaemami59",
+      "created_at": "2024-08-16T13:52:23Z"
+    },
+    {
+      "id": "pr:367",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/367",
+      "title": "Migrate type tests to Vitest",
+      "body": "**This PR**:\r\n\r\n  - [X] Converts `typetest.ts` file extensions to `test-d.ts` to be compatible with Vitest.\r\n  - [X] Converts `expectType()` to either `assertType()` or `expectTypeOf().toMatchTypeOf()`.\r\n  - [X] Converts `expectExactType` to `expectTypeOf().toEqualTypeOf()`.\r\n  - [X] Converts lone-blocks to `test` or `describe` blocks.",
+      "author": "aryaemami59",
+      "created_at": "2024-07-12T22:57:22Z"
+    },
+    {
+      "id": "pr:368",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/368",
+      "title": "Update TypeScript to 5.4",
+      "body": "### This PR:\r\n\r\n  - [X] Bumps TypeScript version to 5.4.\r\n  - [X] Adds TypeScript 5.4 to TypeScript versions to test against during CI. ",
+      "author": "aryaemami59",
+      "created_at": "2024-03-10T03:53:49Z"
+    },
+    {
+      "id": "pr:339",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/339",
+      "title": "Wrap patterns passed to ESLint in single quotes",
+      "body": "When not wrapped, invoking `npm run lint` on ZSH - the default shell on macOS - makes the pattern evaluated by ZSH. That, in turn, fails, as ZSH detects no files match the pattern `src/**/*.js`. Wrapping the pattern in single quotes makes ESLint evaluate it which works.\r\n\r\nI noticed it when trying to publish the latest `master` at my temporary forked scoped package as I need my fix from #338.\r\n\r\nI verified this works by changing a type import back into a regular one in `src/types.ts` and running `npm run lint` - it failed as expected.",
+      "author": "mgol",
+      "created_at": "2023-01-03T18:53:47Z"
+    },
+    {
+      "id": "pr:321",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/321",
+      "title": "Move Redux module type extension into a separate imported file",
+      "body": "This PR:\r\n\r\n- Extracts the \"override the Redux core `Dispatch` type\" declaration to a separate `extend-redux.d.ts` types file\r\n- Updates the `files` list to include that in the published package\r\n- Updates the typetests to compare compilation behavior without and with that extended module imported\r\n\r\nNotes per commit:\r\n\r\nWe previously merged a PR that would globally override the types\r\nfrom the Redux core package and patch the `Dispatch` type to\r\n_always_ assume that the thunk middleware is installed.\r\n\r\nHowever, that assumption is not always true, and globally\r\noverriding types is a dangerous approach to have as a default.\r\n\r\nThis commit moves the global overrides into a separate types file,\r\nwhich can now be imported as 'redux-thunk/extend-redux'.  This\r\nallows users to still opt in to that behavior if desired.\r\n\r\nThe typetest files have been updated to compare the behavior with\r\nand without importing the override file.",
+      "author": "markerikson",
+      "created_at": "2021-10-23T21:23:05Z"
+    },
+    {
+      "id": "pr:320",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/320",
+      "title": "Update TS dev tooling and GH Actions workflow",
+      "body": "This PR:\r\n\r\n- Updates TS to 4.4\r\n- Updates the typetest setup to use `tsc` for checks\r\n- Replaces the Github Actions CI workflow with one based on our current Reselect setup, including testing the types against multiple TS versions at once",
+      "author": "markerikson",
+      "created_at": "2021-10-23T19:35:29Z"
+    },
+    {
+      "id": "pr:353",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/353",
+      "title": "fix GitHub workflow badge URL",
+      "body": "fix GitHub workflow badge URL.\r\n\r\nSee https://github.com/badges/shields/issues/8671\r\n\r\n> You need to update your badge URL from\r\n> https://img.shields.io/github/workflow/status/<user>/<repo>/Run%20Tests\r\n> to\r\n> https://img.shields.io/github/actions/workflow/status/<user>/<repo>/test.yml?branch=main",
+      "author": "shoito",
+      "created_at": "2023-10-21T05:51:12Z"
+    },
+    {
+      "id": "pr:347",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/347",
+      "title": "update README and types to match named export",
+      "body": "",
+      "author": "EskiMojo14",
+      "created_at": "2023-04-21T19:56:59Z"
+    },
+    {
+      "id": "pr:318",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/318",
+      "title": "Use GitHub Actions",
+      "body": "@phryneas ",
+      "author": "nickserv",
+      "created_at": "2021-09-17T15:38:19Z"
+    },
+    {
+      "id": "pr:312",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/312",
+      "title": "Use \"sh\" instead of \"js\" in install instructions",
+      "body": "I noticed that the installation shell commands used `js` instead of `sh`, which potentially affects syntax highlighting.\r\n\r\nThis minor change updates that.",
+      "author": "EvanHahn",
+      "created_at": "2021-02-15T17:45:24Z"
+    },
+    {
+      "id": "pr:305",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/305",
+      "title": "chore: add yarn add line",
+      "body": "A little love for us Yarn users :)",
+      "author": "RichardBray",
+      "created_at": "2020-11-27T03:50:02Z"
+    },
+    {
+      "id": "pr:293",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/293",
+      "title": "Improved wording in README.md",
+      "body": "Improved sentences in following sections:\r\n\r\n- [Note on 2.x Update](https://github.com/reduxjs/redux-thunk#note-on-2x-update)\r\n- [Why Do I Need This?](https://github.com/reduxjs/redux-thunk#why-do-i-need-this)",
+      "author": "haricharanbole",
+      "created_at": "2020-08-05T18:22:34Z"
+    },
+    {
+      "id": "pr:279",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/279",
+      "title": "docs: fix link for `applyMiddleware`",
+      "body": "",
+      "author": "unrevised6419",
+      "created_at": "2020-02-10T21:30:20Z"
+    },
+    {
+      "id": "pr:276",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/276",
+      "title": "Fix link",
+      "body": "",
+      "author": "mhienle",
+      "created_at": "2019-12-31T17:15:19Z"
+    },
+    {
+      "id": "pr:272",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/272",
+      "title": "Correct destructuring example",
+      "body": "`{ api, whatever }` from line 342 is not actually destructuring — though both were introduced in ES2015, the name for this syntax is \"Shorthand property names\":\r\n\r\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015\r\n\r\nI also added some example variables to make the code sample more accessible to beginners.",
+      "author": "telegraham",
+      "created_at": "2019-12-12T00:07:46Z"
+    },
+    {
+      "id": "pr:270",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/270",
+      "title": "Reflect rename of Redux Starter Kit",
+      "body": "",
+      "author": "twavv",
+      "created_at": "2019-11-18T19:28:32Z"
+    },
+    {
+      "id": "pr:262",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/262",
+      "title": "Add Prettier",
+      "body": "Uses the following libraries to make this repo more contributor-friendly:\r\n\r\n- [Prettier](https://prettier.io/) 💅\r\n- ~~[Making your repo Commitizen-friendly](http://commitizen.github.io/cz-cli/#making-your-repo-commitizen-friendly)~~\r\n- ~~[Semantic Release](https://semantic-release.gitbook.io/semantic-release/)~~\r\n\r\n## ~~Automatic npm/GitHub release~~ 📦 ⬆️ \r\n\r\n~~This PR (if merged into master) and any future PRs merged directly into master will trigger an npm & GitHub release + changelog. This is done via [`@jedmao/semantic-release-npm-github-config`](https://github.com/jedmao/semantic-release-npm-github-config), as mentioned in [Semantic Release Community Configurations](https://semantic-release.gitbook.io/semantic-release/extending/shareable-configurations-list#community-configurations).~~\r\n\r\n~~This was done in an effort to make maintenance and releases less of a burden to maintainers.~~\r\n\r\n😀 ❤️ \r\n\r\n## ~~Important!~~ 🚨 \r\n\r\n~~Before merging this PR (if you so decide), [ensure](https://github.com/jedmao/semantic-release-npm-github-config#configuration) that the following **_secret_** environment variables are set in your [Travis-CI settings](https://travis-ci.org/reduxjs/redux-thunk/settings):~~\r\n\r\n- ~~[`GH_TOKEN`](https://github.com/settings/tokens) with [`public_repo`](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/#available-scopes) access.~~\r\n- ~~[`NPM_TOKEN`](https://docs.npmjs.com/cli/token)~~",
+      "author": "jednano",
+      "created_at": "2019-08-29T17:58:55Z"
+    },
+    {
+      "id": "pr:237",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/237",
+      "title": "Clarify terminology",
+      "body": "Currently it describes the action creator as the thunk.",
+      "author": "jmm",
+      "created_at": "2019-03-13T01:14:53Z"
+    },
+    {
+      "id": "pr:234",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/234",
+      "title": "promote gender neutral docs",
+      "body": "I suggest we try and keep documentation gender neutral in order to promote a more inclusive environment.",
+      "author": "beatfactor",
+      "created_at": "2019-02-03T21:43:37Z"
+    },
+    {
+      "id": "pr:217",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/217",
+      "title": "--save no longer needed",
+      "body": "`--save` is on by default as of [npm 5](https://blog.npmjs.org/post/161081169345/v500), so `npm install aphrodite` is functionally equivalent to `npm install --save aphrodite` now",
+      "author": "JoeCortopassi",
+      "created_at": "2018-10-01T17:47:55Z"
+    },
+    {
+      "id": "pr:180",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/180",
+      "title": "Make typings compatible with Redux 4.0.0",
+      "body": "Partially fixes #169.\r\n\r\n**BREAKING**: It only supports TypeScript 2.4.0 or later.\r\n\r\nChanged `ThunkAction<R, S, E>` to `ThunkAction<R, S, E, A>`, where `R` is the return type of the thunk function, `S` is the type of root state, `E` is the type of extra arguments, `A` should be all actions that can be dispatched.\r\n\r\n~Due to the limitation of current implementation, I'm not sure if `R`, `S`, `E`, `A` could be inferred.~ (**UPDATE**: I changed the implementation a little bit. I believe `R`, `S`, `E`, could be inferred in `store.dispatch()`. Changes needed in type definition for `redux` to make `A` inferable. )So a potentially better solution is to create a type for thunk actions by yourself and specify root states and all actions that can be dispatched.\r\n\r\nExample:\r\n```ts\r\ntype SideEffect<T> = ThunkAction<Promise<T>, RootState, {}, RootAction>\r\n```\r\nHere I assume all my thunk functions return a promise of something. Then my thunk function returns a `SideEffect<T>`.\r\n\r\n```ts\r\nexport function asyncFunc(): SideEffect<string> {\r\n  return async (dispatch, getState) => {\r\n    dispatch({ type: ActionTypes.ASYNC });\r\n    await timeout(1000);\r\n    dispatch({ type: ActionTypes.ASYNC_FULFILLED });\r\n    await timeout(1000);\r\n    dispatch({ type: 'INVALID_ACTION_TYPE' });\r\n    return 'NICE!';\r\n  };\r\n}\r\n```\r\n\r\nThen you can check the typings of `dispatch` and `getState`.\r\n\r\n<img src=\"https://user-images.githubusercontent.com/1313238/36715975-a1a7fc22-1bd3-11e8-937f-f6e6b108e4a5.png\" width=\"500\" />\r\n\r\n<img src=\"https://user-images.githubusercontent.com/1313238/36715981-a9d69af2-1bd3-11e8-9a7a-d371247facde.png\" width=\"500\" />\r\n\r\nNaturally it also makes dispatching type-safe, too.\r\n\r\n<img src=\"https://user-images.githubusercontent.com/1313238/36716010-c61836a8-1bd3-11e8-8728-1c03c2cc6426.png\" width=\"400\" />\r\n",
+      "author": "Cryrivers",
+      "created_at": "2018-05-24T23:57:30Z"
+    },
+    {
+      "id": "pr:365",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/365",
+      "title": "Add Expo and React Native examples to CI",
+      "body": "**This PR**:\r\n\r\n  - [X] Adds Expo and React Native examples to CI workflow.\r\n\r\nDepends on #364 ",
+      "author": "aryaemami59",
+      "created_at": "2024-03-11T18:38:17Z"
+    },
+    {
+      "id": "pr:324",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/324",
+      "title": "Remove Webpack config and try test build",
+      "body": "This PR:\r\n\r\n- Removes the 'T' prefix from all generic args for simplicity\r\n- Documents the type overloads for `dispatch`\r\n- Removes the dead Webpack config file\r\n- Adds a typetest to cover #248 and #255 \r\n\r\nand actually gets CodeSandbox CI running so we have test builds",
+      "author": "markerikson",
+      "created_at": "2021-10-25T13:42:39Z"
+    },
+    {
+      "id": "pr:261",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/261",
+      "title": "Upgrade dependencies",
+      "body": "It's 2019!\r\n\r\nThere were a bunch of security vulnerabilities reported by npm that are fixed in these upgrades.",
+      "author": "jednano",
+      "created_at": "2019-08-29T13:53:26Z"
+    },
+    {
+      "id": "pr:338",
+      "type": "pull_request",
+      "url": "https://github.com/reduxjs/redux-thunk/pull/338",
+      "title": "Enforce type imports where applicable",
+      "body": "While not a problem when `redux-thunk` is consumed normally, there are cases (that e.g. my company project just hit) where library types are fetched more directly into the source and their TS code may cause issues when not adhering to the strict rules.\r\n\r\nWhile it would be perfectly understandable to ignore this use case, I think the `importsNotUsedAsValues` flag serves as a nice `strict` extension, making separation between values & types clearer.\r\n\r\nSee https://github.com/webpack/webpack/issues/7378 as an example for the type of issues that using this flag solves.\r\n\r\nI also added ESLint rules enforcing type imports for types; it may seem redundant but the tsconfig flag also prevents regular imports where ALL tokens are only used as types; mixing is allowed. The ESLint rule requires splitting such imports into type & non-type parts.\r\n\r\nMy particular use case would be solved even without the ESLint rule; if, for some reason, you prefer a bit more lax setup done directly by TS only, I can drop this part. I just added it as I thought it might be useful.",
+      "author": "mgol",
+      "created_at": "2023-01-02T20:07:25Z"
+    }
+  ]
+}
